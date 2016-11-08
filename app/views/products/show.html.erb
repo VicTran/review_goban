@@ -53,6 +53,9 @@
       <p>Thong tin khuyen mai</p>
       <p>Promotion: <%= @product.promotion.nil? ? "No" :
         (@product.promotion.to_s + " %") %></p>
+      <hr>
+      <%= link_to t("product.order"), new_guest_order_path(product_id: @product.id),
+        class: "btn btn-default" %>
     </div>
   </div>
 </div>

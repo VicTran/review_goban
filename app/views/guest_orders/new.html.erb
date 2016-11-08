@@ -1,0 +1,10 @@
+<div style = "padding-top: 100px">
+  <%= form_for @current_order, url: guest_orders_path(guest_order_id: @current_order.id),
+    method: :post do |f| %>
+    <%= f.fields_for :orders do |order_item| %>
+      <%= render "order_fields", ff: order_item %>
+    <% end %>
+    <%= f.submit t(:order), class: "btn btn-primary" %>
+  <% end %>
+</div>
+
