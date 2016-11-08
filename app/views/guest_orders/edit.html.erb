@@ -1,0 +1,29 @@
+<div style = "padding-top: 100px">
+  <%= form_for @current_order do |f| %>
+    <%= f.fields_for :orders do |order_item| %>
+      <%= render "order_fields", ff: order_item %>
+    <% end %>
+    <br>
+    <hr>
+    <br>
+    <div class = "row">
+      <%= render "shared/error_messages", object: @current_order %>
+      <div class = "col-xs-4 col-md-4 rcorners_order">
+        Buyer Infomation:
+        <%= f.text_field :name_from, class: "form-control" %>
+        <%= f.text_field :email_from, class: "form-control" %>
+        <%= f.text_field :phone_from, class: "form-control" %>
+        <%= f.text_field :address_from, class: "form-control" %>
+      </div>
+      <div class = "col-xs-1 col-md-1 triangle_left"></div>
+      <div class = "col-xs-4 col-md-4 rcorners_order">
+        Receiver Infomation:
+        <%= f.text_field :name_to, class: "form-control" %>
+        <%= f.text_field :email_to, class: "form-control" %>
+        <%= f.text_field :phone_to, class: "form-control" %>
+        <%= f.text_field :address_to, class: "form-control" %>
+      </div>
+    </div>
+    <%= f.submit t(:order), class: "btn btn-primary" %>
+  <% end %>
+</div>

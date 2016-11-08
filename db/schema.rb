@@ -52,31 +52,27 @@ ActiveRecord::Schema.define(version: 20161025022206) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "guest_orders", force: :cascade do |t|
-    t.integer  "follower_id"
-    t.integer  "followed_id"
-    t.integer  "order_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "guest_orders", ["order_id"], name: "index_guest_orders_on_order_id"
-
-  create_table "guests", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "phone"
-    t.string   "address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name_from"
+    t.string   "email_from"
+    t.string   "phone_from"
+    t.string   "address_from"
+    t.string   "name_to"
+    t.string   "email_to"
+    t.string   "phone_to"
+    t.string   "address_to"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "orders", force: :cascade do |t|
+    t.integer  "guest_order_id"
     t.integer  "product_id"
     t.integer  "number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
+  add_index "orders", ["guest_order_id"], name: "index_orders_on_guest_order_id"
   add_index "orders", ["product_id"], name: "index_orders_on_product_id"
 
   create_table "overall_averages", force: :cascade do |t|

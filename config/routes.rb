@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  get 'search/index'
+
+  get 'guest_orders/new'
+
+  get 'guest_orders/show'
+
+  get 'guest_orders/edit'
 
   post '/rate' => 'rater#create', :as => 'rate'
   devise_for :users
@@ -19,4 +24,6 @@ Rails.application.routes.draw do
   end
   resources :categories, only: [:index, :show]
   resources :searchs, only: :index
+  resources :orders, only: [:new, :create]
+  resources :guest_orders, only: [:new, :create, :edit,:update, :show]
 end

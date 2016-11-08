@@ -51,6 +51,7 @@ en:
     image: "Image"
     display: "Display"
     all: "All products"
+    order: "Order"
   user:
     edit: "Edit"
     new: "New"
@@ -71,3 +72,9 @@ en:
       to_price: "To Price"
       from_promotion: "Form Promotion"
       to_promotion: "To Promotion"
+  order: "Order"
+  guest_order:
+    new_guest_order_successful: "Order product successful"
+    new_guest_order_unsuccessful: "Order product unsuccessful"
+    edit_guest_order_successful: "Order product successful with infomation"
+    

@@ -1,9 +1,14 @@
 class CreateGuestOrders < ActiveRecord::Migration
   def change
     create_table :guest_orders do |t|
-      t.integer :follower_id
-      t.integer :followed_id
-      t.references :order, index: true, foreign_key: true
+      t.string :name_from
+      t.string :email_from
+      t.string :phone_from
+      t.string :address_from
+      t.string :name_to
+      t.string :email_to
+      t.string :phone_to
+      t.string :address_to
 
       t.timestamps null: false
     end
