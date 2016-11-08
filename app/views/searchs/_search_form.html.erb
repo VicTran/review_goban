@@ -1,0 +1,28 @@
+<div class="panel-body">
+  <%= search_form_for @search, url: searchs_path do |f| %>
+    <div class="row">
+      <div class="large-5 small-4 col-sm-3">
+        <%= f.label :name_cont, t("search.product.name") %>
+        <%= f.text_field :name_cont, class: "form-control",
+          placeholder: t("search.product.name") %>
+      </div>
+      <div class="large-5 small-4 col-sm-2">
+        <%= f.label :is_display_false, t("search.product.not_display") %>
+        <%= f.check_box :is_display_false %>
+      </div>
+      <div class="large-5 small-4 col-sm-3">
+        <%= f.label :price_gteq, t("search.product.from_price") %>
+        <%= f.number_field :price_gteq, class: "form-control", min: 1000, step: 1000  %>
+        <%= f.label :price_lteq, t("search.product.to_price") %>
+        <%= f.number_field :price_lteq, class: "form-control", min: 1000, step: 1000 %>
+      </div>
+      <div class="large-5 small-4 col-sm-3 center">
+        <%= f.label :promotion_gteq, t("search.product.from_promotion")%>
+        <%= f.number_field :promotion_gteq, class: "form-control",in: 0.0..100.0, step: 0.5 %>
+        <%= f.label :promotion_lteq, t("search.product.to_promotion") %>
+        <%= f.number_field :promotion_lteq, class: "form-control",in: 0.0..100.0, step: 0.5 %>
+      </div>
+    </div>
+    <%= f.submit "Search", class: "btn btn-success col-sm-2" %>
+  <% end %>
+</div>

@@ -1,6 +1,14 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <%= link_to t(:logo), root_path, id: "logo" %>
+    <div id = "search_header">
+      <% @products = Product.all %>
+      <% @search = @products.ransack params[:q] %>
+      <%= search_form_for @search, url: searchs_path, method: :get do |f| %>
+        <%= f.text_field :name_cont, placeholder: "Input product's name",
+          class: "form-control" %>
+      <% end %>
+    </div>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to t(:home), root_path %></li>
