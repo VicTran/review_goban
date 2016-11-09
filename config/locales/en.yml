@@ -77,4 +77,5 @@ en:
     new_guest_order_successful: "Order product successful"
     new_guest_order_unsuccessful: "Order product unsuccessful"
     edit_guest_order_successful: "Order product successful with infomation"
-    
+
+  back_to_cart: "Back to Your Cart"

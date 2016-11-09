@@ -1,0 +1,10 @@
+<div style = "padding-top: 100px">
+  <%= form_for @current_cart, url: carts_path(cart_id: @current_cart.id),
+    method: :post do |f| %>
+    <%= f.fields_for :order_items do |order_item| %>
+      <%= render "order_fields", ff: order_item %>
+    <% end %>
+    <%= f.submit "Add To Cart", class: "btn btn-primary" %>
+  <% end %>
+</div>
+

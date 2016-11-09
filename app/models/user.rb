@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
 
   has_many :product, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :carts, dependent: :destroy
   def password_required?
     new_record? ? super : false
   end
