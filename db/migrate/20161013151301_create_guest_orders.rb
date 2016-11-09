@@ -9,6 +9,7 @@ class CreateGuestOrders < ActiveRecord::Migration
       t.string :email_to
       t.string :phone_to
       t.string :address_to
+      t.integer :status, default: 0
 
       t.timestamps null: false
     end

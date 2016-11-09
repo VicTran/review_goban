@@ -54,8 +54,13 @@
       <p>Promotion: <%= @product.promotion.nil? ? "No" :
         (@product.promotion.to_s + " %") %></p>
       <hr>
-      <%= link_to t("product.order"), new_guest_order_path(product_id: @product.id),
-        class: "btn btn-default" %>
+      <% if user_signed_in? %>
+        <%= link_to t("product.order"), new_cart_path(product_id:
+          @product.id) ,class: "btn btn-default" %>
+      <% else %>
+        <%= link_to t("product.order"), new_guest_order_path(product_id:
+          @product.id), class: "btn btn-default" %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -17,3 +17,4 @@
 //= require jquery.raty
 //= require ratyrate
 $('.datepicker').datepicker();
+$('.disable_input :text_field').prop('disabled', true);

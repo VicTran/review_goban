@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161025022206) do
+ActiveRecord::Schema.define(version: 20161109143210) do
 
   create_table "average_caches", force: :cascade do |t|
     t.integer  "rater_id"
@@ -24,13 +24,11 @@ ActiveRecord::Schema.define(version: 20161025022206) do
 
   create_table "carts", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "product_id"
-    t.integer  "number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "status",     default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  add_index "carts", ["product_id"], name: "index_carts_on_product_id"
   add_index "carts", ["user_id"], name: "index_carts_on_user_id"
 
   create_table "categories", force: :cascade do |t|
@@ -60,9 +58,21 @@ ActiveRecord::Schema.define(version: 20161025022206) do
     t.string   "email_to"
     t.string   "phone_to"
     t.string   "address_to"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "status",       default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer  "cart_id"
+    t.integer  "product_id"
+    t.integer  "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "order_items", ["cart_id"], name: "index_order_items_on_cart_id"
+  add_index "order_items", ["product_id"], name: "index_order_items_on_product_id"
 
   create_table "orders", force: :cascade do |t|
     t.integer  "guest_order_id"

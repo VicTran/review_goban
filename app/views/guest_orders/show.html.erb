@@ -1,2 +1,41 @@
-<h1>GuestOrders#show</h1>
-<p>Find me in app/views/guest_orders/show.html.erb</p>
+<div style = "padding-top: 100px" class = "disable_input">
+  <%= form_for @current_order do |f| %>
+    <%= f.fields_for :orders do |ff| %>
+      <div class="input-group fields">
+        <span class="input-group-addon input-group-addon-2">
+          <%= link_to ff.object.product.name, product_path(ff.object.product) %>
+        </span>
+        <span class="input-group-addon"><%= ff.number_field :number,
+          class: "form-control", disabled: true%></span>
+        <span class="input-group-addon"><%= ff.object.product.price %></span>
+        <span class="input-group-addon"><%= ff.object.product.price * ff.object.number %></span>
+        <%= ff.hidden_field :_destroy, value: false %>
+        <span class="input-group-addon">
+          <%= link_to_remove_fields t(:remove), ff %>
+        </span>
+      </div>
+    <% end %>
+    <br>
+    <hr>
+    <br>
+    <div class = "row">
+      <%= render "shared/error_messages", object: @current_order %>
+      <div class = "col-xs-4 col-md-4 rcorners_order">
+        Buyer Infomation:
+        <%= f.text_field :name_from, class: "form-control", disabled: true %>
+        <%= f.text_field :email_from, class: "form-control", disabled: true %>
+        <%= f.text_field :phone_from, class: "form-control", disabled: true %>
+        <%= f.text_field :address_from, class: "form-control", disabled: true %>
+      </div>
+      <div class = "col-xs-1 col-md-1 triangle_left"></div>
+      <div class = "col-xs-4 col-md-4 rcorners_order">
+        Receiver Infomation:
+        <%= f.text_field :name_to, class: "form-control", disabled: true %>
+        <%= f.text_field :email_to, class: "form-control", disabled: true %>
+        <%= f.text_field :phone_to, class: "form-control", disabled: true %>
+        <%= f.text_field :address_to, class: "form-control", disabled: true %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
