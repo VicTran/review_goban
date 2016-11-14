@@ -1,5 +1,17 @@
 <div style = "padding-top: 100px">
   <%= form_for @current_order do |f| %>
+    <div class="input-group fields">
+  <span class="input-group-addon input-group-addon-2">
+    Name
+  </span>
+  <span class="input-group-addon">Number</span>
+  <span class="input-group-addon">Prict</span>
+  <span class="input-group-addon">Total Price</span>
+  <span class="input-group-addon">
+    Action
+  </span>
+</div>
+
     <%= f.fields_for :orders do |order_item| %>
       <%= render "order_fields", ff: order_item %>
     <% end %>
@@ -10,17 +22,25 @@
       <%= render "shared/error_messages", object: @current_order %>
       <div class = "col-xs-4 col-md-4 rcorners_order">
         Buyer Infomation:
+        <%= f.label :name_from %>
         <%= f.text_field :name_from, class: "form-control" %>
+        <%= f.label :email_from %>
         <%= f.text_field :email_from, class: "form-control" %>
+        <%= f.label :phone_from %>
         <%= f.text_field :phone_from, class: "form-control" %>
+        <%= f.label :address_from %>
         <%= f.text_field :address_from, class: "form-control" %>
       </div>
       <div class = "col-xs-1 col-md-1 triangle_left"></div>
       <div class = "col-xs-4 col-md-4 rcorners_order">
         Receiver Infomation:
+        <%= f.label :name_to %>
         <%= f.text_field :name_to, class: "form-control" %>
+        <%= f.label :email_to %>
         <%= f.text_field :email_to, class: "form-control" %>
+        <%= f.label :phone_to %>
         <%= f.text_field :phone_to, class: "form-control" %>
+        <%= f.label :address_to %>
         <%= f.text_field :address_to, class: "form-control" %>
       </div>
     </div>

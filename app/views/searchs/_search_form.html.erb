@@ -6,10 +6,6 @@
         <%= f.text_field :name_cont, class: "form-control",
           placeholder: t("search.product.name") %>
       </div>
-      <div class="large-5 small-4 col-sm-2">
-        <%= f.label :is_display_false, t("search.product.not_display") %>
-        <%= f.check_box :is_display_false %>
-      </div>
       <div class="large-5 small-4 col-sm-3">
         <%= f.label :price_gteq, t("search.product.from_price") %>
         <%= f.number_field :price_gteq, class: "form-control", min: 1000, step: 1000  %>

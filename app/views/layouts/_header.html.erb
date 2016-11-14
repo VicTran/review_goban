@@ -21,6 +21,7 @@
               <%= current_user.name %><b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
+              <li><%= link_to "cart", new_cart_path %></li>
               <li><%= link_to t(:setting), edit_user_registration_path %></li>
               <li class="divider"></li>
               <li>

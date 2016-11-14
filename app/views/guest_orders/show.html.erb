@@ -8,11 +8,7 @@
         <span class="input-group-addon"><%= ff.number_field :number,
           class: "form-control", disabled: true%></span>
         <span class="input-group-addon"><%= ff.object.product.price %></span>
-        <span class="input-group-addon"><%= ff.object.product.price * ff.object.number %></span>
-        <%= ff.hidden_field :_destroy, value: false %>
-        <span class="input-group-addon">
-          <%= link_to_remove_fields t(:remove), ff %>
-        </span>
+        <span class="input-group-addon"><%= ff.object.product.price * ff.object.number * (100- ff.object.product.promotion)/100 %></span>
       </div>
     <% end %>
     <br>
@@ -22,17 +18,25 @@
       <%= render "shared/error_messages", object: @current_order %>
       <div class = "col-xs-4 col-md-4 rcorners_order">
         Buyer Infomation:
+        <%= f.label :name_from %>
         <%= f.text_field :name_from, class: "form-control", disabled: true %>
+        <%= f.label :email_from %>
         <%= f.text_field :email_from, class: "form-control", disabled: true %>
+        <%= f.label :phone_from %>
         <%= f.text_field :phone_from, class: "form-control", disabled: true %>
+        <%= f.label :address_from %>
         <%= f.text_field :address_from, class: "form-control", disabled: true %>
       </div>
       <div class = "col-xs-1 col-md-1 triangle_left"></div>
       <div class = "col-xs-4 col-md-4 rcorners_order">
         Receiver Infomation:
+        <%= f.label :name_to %>
         <%= f.text_field :name_to, class: "form-control", disabled: true %>
+        <%= f.label :email_to %>
         <%= f.text_field :email_to, class: "form-control", disabled: true %>
+        <%= f.label :phone_to %>
         <%= f.text_field :phone_to, class: "form-control", disabled: true %>
+        <%= f.label :address_to %>
         <%= f.text_field :address_to, class: "form-control", disabled: true %>
       </div>
     </div>

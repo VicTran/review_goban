@@ -1,5 +1,16 @@
 <div style = "padding-top: 100px">
   <%= form_for @cart do |f| %>
+      <div class="input-group fields">
+  <span class="input-group-addon input-group-addon-2">
+    Name
+  </span>
+  <span class="input-group-addon">Number</span>
+  <span class="input-group-addon">Prict</span>
+  <span class="input-group-addon">Total Price</span>
+  <span class="input-group-addon">
+    Action
+  </span>
+</div>
     <%= f.fields_for :order_items do |ff| %>
       <div class="input-group fields">
         <span class="input-group-addon input-group-addon-2">
@@ -7,7 +18,7 @@
         </span>
         <span class="input-group-addon"><%= ff.number_field :number, class: "form-control", disabled: true %></span>
         <span class="input-group-addon"><%= ff.object.product.price %></span>
-        <span class="input-group-addon"><%= ff.object.product.price * ff.object.number %></span>
+        <span class="input-group-addon"><%= ff.object.product.price * ff.object.number * (100- ff.object.product.promotion)/100 %></span>
       </div>
     <% end %>
     <hr>

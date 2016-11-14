@@ -1,6 +1,17 @@
 <div style = "padding-top: 100px">
   <%= form_for @current_cart, url: carts_path(cart_id: @current_cart.id),
     method: :post do |f| %>
+        <div class="input-group fields">
+  <span class="input-group-addon input-group-addon-2">
+    Name
+  </span>
+  <span class="input-group-addon">Number</span>
+  <span class="input-group-addon">Prict</span>
+  <span class="input-group-addon">Total Price</span>
+  <span class="input-group-addon">
+    Action
+  </span>
+</div>
     <%= f.fields_for :order_items do |order_item| %>
       <%= render "order_fields", ff: order_item %>
     <% end %>
