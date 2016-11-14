@@ -4,10 +4,21 @@ module UsersHelper
     size = options[:size]
     if user.picture?
       gravatar_url = user.picture.url
-      image_tag gravatar_url, height: "50", width: "50",
+      image_tag gravatar_url, size: size,
         alt: user.name, class: "gravatar"
     else
       gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
+      image_tag gravatar_url, alt: user.name, class: "gravatar"
+    end
+  end
+
+  def show_user_picture user
+    gravatar_id = Digest::MD5::hexdigest user.email.downcase
+    if user.picture?
+      gravatar_url = user.picture.url
+      image_tag gravatar_url, height: 200, weight: 200, alt: User.name
+    else
+      gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{100}"
       image_tag gravatar_url, alt: user.name, class: "gravatar"
     end
   end

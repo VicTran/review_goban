@@ -1,12 +1,7 @@
-<div class="input-group fields">
-  <span class="input-group-addon input-group-addon-2">
-    <%= link_to ff.object.product.name, product_path(ff.object.product) %>
-  </span>
-  <span class="input-group-addon"><%= ff.number_field :number, class: "form-control"  %></span>
-  <span class="input-group-addon"><%= ff.object.product.price %></span>
-  <span class="input-group-addon"><%= ff.object.product.price * ff.object.number * (100- ff.object.product.promotion)/100 %></span>
-  <%= ff.hidden_field :_destroy, value: false %>
-  <span class="input-group-addon">
-    <%= link_to_remove_fields t(:remove), ff %>
-  </span>
-</div>
+<tr>
+  <td><%= link_to ff.object.product.name, product_path(ff.object.product) %></td>
+  <td><%= ff.number_field :number, class: "form-control"  %></td>
+  <td><%= ff.object.sum_price %></td>
+  <%= ff.hidden_field :_destroy, class: 'check-remove' %>
+  <td><%= link_to 'Remove', '#', class: 'remove_row' %></td>
+</tr>

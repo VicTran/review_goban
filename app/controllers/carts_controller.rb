@@ -1,5 +1,11 @@
 class CartsController < ApplicationController
   before_action :check_current_order, only: [:edit, :update]
+  before_action :check_params, only: [:create, :update]
+
+  def index
+    @carts = current_user.carts
+  end
+
   def new
     unless params[:product_id].nil?
       @order_item = current_cart.order_items.find_by product_id: params[:product_id]
@@ -55,6 +61,21 @@ class CartsController < ApplicationController
     if @cart.status == 1
       flash[:danger] = "You can not do it"
       redirect_to root_path
+    end
+  end
+
+  def check_params
+    @cart = Cart.find_by id: params[:id]
+    @cart ||= Cart.find_by id: params[:cart_id]
+    if params[:cart].nil?
+      a = {}
+    else
+      a = params[:cart][:order_items_attributes].select{|a,b| b[:_destroy] == "false"}
+      @cart.update_attributes cart_params
+    end
+    if a.empty?
+      flash[:danger] = "Chua co sp nao"
+      redirect_to new_cart_path(@cart)
     end
   end
 end

@@ -1,21 +1,30 @@
+<%= javascript_include_tag 'cart' %>
 <div style = "padding-top: 100px">
-  <%= form_for @current_cart, url: carts_path(cart_id: @current_cart.id),
+<%= form_for @current_cart, url: carts_path(cart_id: @current_cart.id),
     method: :post do |f| %>
-        <div class="input-group fields">
-  <span class="input-group-addon input-group-addon-2">
-    Name
-  </span>
-  <span class="input-group-addon">Number</span>
-  <span class="input-group-addon">Prict</span>
-  <span class="input-group-addon">Total Price</span>
-  <span class="input-group-addon">
-    Action
-  </span>
-</div>
-    <%= f.fields_for :order_items do |order_item| %>
-      <%= render "order_fields", ff: order_item %>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th class="center">Number</th>
+        <th class="center">Price</th>
+        <th class="center">Total Price</th>
+        <th class="center"><%= t "exam.action" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= f.fields_for :order_items do |order_item| %>
+        <%= render "order_fields", ff: order_item %>
     <% end %>
-    <%= f.submit "Add To Cart", class: "btn btn-primary" %>
-  <% end %>
-</div>
+    </tbody>
+  </table>
+  <hr>
+    Total Price: <%= f.object.sum_price %>
+  <hr>
+    <div class="row">
 
+      <div class="col-sm-4 col-md-4">
+        <%= f.submit "Add To Cart", class: "btn btn-primary" %>
+      </div>
+    </div>
+<% end %>
+</div>
