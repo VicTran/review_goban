@@ -42,7 +42,7 @@ class GuestOrdersController < ApplicationController
     elsif @current_order.update_attributes guest_order_params_update
       @current_order.update_attributes status: 1
       flash[:success] = t "guest_order.edit_guest_order_successful"
-      redirect_to show_guest_order_path(@current_order)
+      redirect_to guest_order_path(@current_order)
     else
       render :edit
     end

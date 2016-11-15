@@ -1,4 +1,4 @@
-<%= form_for [@product, @comment] , remote: true do |f| %>
+<%= form_for [@product, @comment]  do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
 	<%= f.text_area :content, placeholder: "Nhap vao comment" %>
 	<%= f.submit "Comment", class: "btn btn-primary" %>

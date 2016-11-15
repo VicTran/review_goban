@@ -1,2 +1,18 @@
-<h1>Carts#index</h1>
-<p>Find me in app/views/carts/index.html.erb</p>
+<% provide :title, t("user.all_users") %>
+<div class="row">
+  <h1><%= t "cart.all" %></h1>
+  <hr/>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th class="center"><%= t "cart.day" %></th>
+        <th class="center"><%= t "cart.status" %></th>
+        <th class="center"><%= t "cart.price" %></th>
+        <th class="center", colspan="2"><%= t "cart.actions" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @carts %>
+    </tbody>
+  </table>
+</div>

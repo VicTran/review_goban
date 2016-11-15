@@ -4,7 +4,7 @@
   </span>
   <span class="input-group-addon"><%= ff.number_field :number, class: "form-control"  %></span>
   <span class="input-group-addon"><%= ff.object.product.price %></span>
-  <span class="input-group-addon"><%= ff.object.product.price * ff.object.number %></span>
+  <span class="input-group-addon"><%= ff.object.product.price * ff.object.number * (100- ff.object.product.promotion)/100 %></span>
   <%= ff.hidden_field :_destroy, value: false %>
   <span class="input-group-addon">
     <%= link_to_remove_fields t(:remove), ff %>

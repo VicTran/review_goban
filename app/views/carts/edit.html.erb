@@ -1,15 +1,23 @@
+<%= javascript_include_tag 'cart' %>
 <div style = "padding-top: 100px">
-  <%= form_for @cart do |f| %>
-    <%= f.fields_for :order_items do |ff| %>
-      <div class="input-group fields">
-        <span class="input-group-addon input-group-addon-2">
-          <%= link_to ff.object.product.name, product_path(ff.object.product) %>
-        </span>
-        <span class="input-group-addon"><%= ff.number_field :number, class: "form-control", disabled: true %></span>
-        <span class="input-group-addon"><%= ff.object.product.price %></span>
-        <span class="input-group-addon"><%= ff.object.product.price * ff.object.number %></span>
-      </div>
+<%= form_for @cart do |f| %>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th class="center">Name</th>
+        <th class="center">Prict</th>
+        <th class="center">Total Price</th>
+        <th class="center"><%= t "exam.action" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= f.fields_for :order_items do |order_item| %>
+        <%= render "order_fields", ff: order_item %>
     <% end %>
+    </tbody>
+  </table>
+  <hr>
+      Total Price: <%= f.object.sum_price %>
     <hr>
     <div class="row">
       <div class="col-sm-4 col-md-4">
@@ -21,5 +29,5 @@
         <%= f.submit "Buy", class: "btn btn-primary" %>
       </div>
     </div>
-  <% end %>
+<% end %>
 </div>

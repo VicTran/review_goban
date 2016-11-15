@@ -2,21 +2,26 @@ class CommentsController < ApplicationController
 #   load_and_authorize_resource
   def create
     @product = Product.find_by id: params[:product_id]
-	@comment = @product.comments.build(comment_params)
+    @comment = @product.comments.build(comment_params)
     @comment.user_id = current_user.id
-	if @comment.save
-	  respond_to do |format|
-	    format.html do
-  		  redirect_to product_path(@product)
-		end
-	    format.js
-  	  end
-	else
-	  flash[:warning]= "You can not comment on this post"
-	  redirect_to product_path(@product)
-	end
+    if @comment.save
+      redirect_to product_path(@product)
+    else
+      flash[:warning]= "You can not comment on this post"
+      redirect_to product_path(@product)
+    end
   end
-  
+
+  def update
+    @comment = Comment.find_by id: params[:id]
+    if @comment.update_attributes comment_params
+      flash[:success] = ""
+    else
+      flash[:danger] = ""
+    end
+    redirect_to product_path(@comment.product)
+  end
+
   def destroy
     @product = Product.find_by id: params[:product_id]
   	@comment = @product.comments.find_by id: params[:id]

@@ -1,19 +1,4 @@
-<% @comment = comment %>
-<li id="comment-<%= comment.id %>">
-  <%= gravatar_for comment.user %>
-  <span><%= comment.user.name %></span>:
-  <span class="content"><%= comment.content %></span>
-  <span class="timestamp">
-    Posted: <%= time_tag comment.created_at %>
-    <% if current_user?(comment.user) %>
-      <%= link_to "Delete || ", product_comment_path(@product, comment), method: :delete, remote: true,
-        data: { confirm: "You sure?" } %>
-    <% end %>
-    <a href="#" data-toggle="modal" data-target="#myModal-<%= comment.id %>">Edit</a>
-  </span>
-</li>
-
-<div id="myModal-<%= comment.id %>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -21,6 +6,8 @@
             </div>
             <div class="modal-body row">
             <div style="margin: 30px;">
+                <h6 class="text-center">COMPLETE THESE FIELDS TO SIGN UP</h6>
+                <% @comment = comment %>
                 <%= form_for([ @product, @comment]) do |f| %>
                   <%= render 'shared/error_messages', object: f.object %>
                   <%= f.text_area :content %>
@@ -68,5 +55,3 @@ $('a[href*=#]:not([href=#])').click(function() {
 });
 
 </script>
-
-

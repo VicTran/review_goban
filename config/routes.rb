@@ -14,11 +14,12 @@ Rails.application.routes.draw do
     resources :main, only: :index
   end
   resources :products do
-    resources :comments, only: [:create, :new, :destroy]
+    resources :comments, only: [:create, :new, :destroy, :update]
   end
   resources :categories, only: [:index, :show]
   resources :searchs, only: :index
   resources :orders, only: [:new, :create]
   resources :guest_orders, only: [:new, :create, :edit, :update, :show]
   resources :carts
+  resources :users, only: :show
 end

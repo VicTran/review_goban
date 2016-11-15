@@ -19,14 +19,14 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  def update
-    if @user.update_attributes user_params
-      flash[:success] = t "message.edit_user_successful"
-      redirect_to admin_users_path
-    else
-      render :edit
-    end
-  end
+  # def update
+  #   if @user.update_attributes user_params
+  #     flash[:success] = t "message.edit_user_successful"
+  #     redirect_to admin_users_path
+  #   else
+  #     render :edit
+  #   end
+  # end
 
   def destroy
     if @user.destroy
