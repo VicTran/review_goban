@@ -3,14 +3,14 @@
     <%= form_for [:admin, @category] do |f| %>
       <%= render "shared/error_messages", object: @category %>
 
-      <%= f.label :name %><br/>
+      <%= f.label :name, t("category.name") %><br/>
       <%= f.text_field :name, class: "form-control" %>
 
-      <%= f.label :content %><br/>
+      <%= f.label :content, t("category.content") %><br/>
       <%= f.text_field :content, class: "form-control" %>
 
       <div class="actions">
-        <%= f.submit "Update", class: "btn-primary" %>
+        <%= f.submit t("category.submit"), class: "btn-primary" %>
       </div>
     <% end %>
   </div>

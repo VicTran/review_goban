@@ -5,25 +5,30 @@
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
-        <th class="center">Number</th>
-        <th class="center">Price</th>
-        <th class="center">Total Price</th>
-        <th class="center"><%= t "exam.action" %></th>
+        <th class="center"><%= t "product.name" %></th>
+        <th class="center"><%= t "product.number" %></th>
+        <th class="center"><%= t "product.price" %></th>
+        <th class="center"><%= t "product.promotion" %></th>
+        <th class="center"><%= t "product.total_price" %></th>
+        <th class="center"><%= t "product.action" %></th>
       </tr>
     </thead>
     <tbody>
       <%= f.fields_for :order_items do |order_item| %>
         <%= render "order_fields", ff: order_item %>
-    <% end %>
+      <% end %>
+      <tr class="center"><td colspan="6">
+        <%= t("cart.have_not_product") if @current_cart.order_items.empty? %>
+      </td></tr>
     </tbody>
   </table>
   <hr>
-    Total Price: <%= f.object.sum_price %>
+    <%= t("product.total_price") %>: <%= f.object.sum_price %>
   <hr>
     <div class="row">
 
       <div class="col-sm-4 col-md-4">
-        <%= f.submit "Add To Cart", class: "btn btn-primary" %>
+        <%= f.submit t("cart.add_to_cart"), class: "btn btn-primary" %>
       </div>
     </div>
 <% end %>

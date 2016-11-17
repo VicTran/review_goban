@@ -1,5 +1,5 @@
 <%= form_for [@product, @comment]  do |f| %>
-	<%= render 'shared/error_messages', object: f.object %>
-	<%= f.text_area :content, placeholder: "Nhap vao comment" %>
-	<%= f.submit "Comment", class: "btn btn-primary" %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <%= f.text_area :content, placeholder: t("input_comment") %>
+  <%= f.submit t("comment"), class: "btn btn-primary" %>
 <% end %>

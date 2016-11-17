@@ -1,17 +1,17 @@
 <% provide :title, t("user.all_users") %>
-<div class="row">
-  <h1><%= t "admin.all_users" %></h1>
-  <hr/>
-    <%= link_to t("admin.new_user"), new_admin_user_path,
-      class: "btn btn-success icon-trash icon-white" %>
-  <hr/>
+<div class="col-md-8 col-sm-offset-2">
   <%= render "admin/users/search_form" %>
+  <hr>
+  <div class="panel-body">
+    <%= link_to t("user.new"), new_admin_user_path,
+      class: "btn btn-success icon-trash icon-white" %>
+  </div>
   <table class="table table-bordered">
     <thead>
       <tr>
         <th class="center"><%= t "user.name" %></th>
         <th class="center"><%= t "user.email" %></th>
-        <th class="center", colspan="2"><%= t "user.actions" %></th>
+        <th class="center", colspan="2"><%= t "user.action" %></th>
       </tr>
     </thead>
     <tbody>
@@ -22,3 +22,4 @@
     <%= paginate @users %>
   </div>
 </div>
+

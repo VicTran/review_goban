@@ -3,7 +3,7 @@
   <td class="center"><%= product.category.name %></td>
   <td class="center"><%= product.name %></td>
   <td class="center">
-    <%= product.is_display? ? "Yes" : "No" %>
+    <%= product.is_display? ? t("yes_") : t("no_") %>
   </td>
   <td>
     <%= link_to t("product.show"), admin_product_path(product),

@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to product_path(@product)
     else
-      flash[:warning]= "You can not comment on this post"
+      flash[:warning]= t "can_not_comment"
       redirect_to product_path(@product)
     end
   end
@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
   	@comment.destroy
   	respond_to do |format|
       format.html do
-        flash[:success] = 'Comment deleted.'
+        flash[:success] = t "comment_delete"
         redirect_to product_path(@product)
       end
       format.js # JavaScript response

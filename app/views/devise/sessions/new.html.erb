@@ -1,5 +1,5 @@
-<% provide :title, t("user.login") %>
-<h1><strong><%= t "user.login" %></strong></h1>
+<% provide :title, t("login") %>
+<h1><strong><%= t "login" %></strong></h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for resource, as: resource_name,
@@ -7,22 +7,22 @@
 
       <%= devise_error_messages! %>
 
-      <%= f.label :email %><br/>
+      <%= f.label :email, t("user.email") %><br/>
       <%= f.email_field :email, autofocus: true, class: "form-control" %>
 
-      <%= f.label :password %><br/>
+      <%= f.label :password, t("user.password") %><br/>
       <%= f.password_field :password, autocomplete: "off",
         class: "form-control" %>
 
       <% if devise_mapping.rememberable? %>
         <div class="field">
           <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
+          <%= f.label :remember_me, t("user.remember_me")%>
         </div>
       <% end %>
 
       <div class="actions">
-        <%= f.submit t("user.login"), class: "btn btn-primary" %>
+        <%= f.submit t("login"), class: "btn btn-primary" %>
       </div>
     <% end %>
   </div>

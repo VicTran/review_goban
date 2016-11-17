@@ -38,20 +38,19 @@
 
   <div class="col-sm-4">
     <div class="well">
-      <p>Category: <%= @product.category.name %></p>
-      <p>Name: <%= @product.name %></p>
-      <p>Price: <%= @product.price %></p>
+      <p><%= t "product.category"%>: <%= @product.category.name %></p>
+      <p><%= t "product.name"%>: <%= @product.name %></p>
+      <p><%= t "product.price"%>: <%= @product.price %></p>
       <%= rating_for @product, "price", star: 5, disable_after_rate: false %>
-      <%= @product.average("price").nil? ? "0" : @product.average("price").avg %>
-      <p><%= @product.rates("price").count %></p>
-      <p>Description: <%= @product.description%></p>
+      <p><%= t "product.rate_count"%>:<%= @product.rates("price").count %></p>
+      <p><%= t "product.description"%>: <%= @product.description%></p>
     </div>
   </div>
 
     <div class="col-sm-4">
     <div class="well">
-      <p>Thong tin khuyen mai</p>
-      <p>Promotion: <%= @product.promotion.nil? ? "No" :
+      <p><%= t "product.promotion_info"%></p>
+      <p><%= t "product.promotion"%>: <%= @product.promotion.nil? ? t("no") :
         (@product.promotion.to_s + " %") %></p>
       <hr>
       <% if user_signed_in? %>
@@ -65,36 +64,40 @@
   </div>
 </div>
 <br>
-<div class="container">
-  <div>San pham lien quan</div>
-  <div class="row" style="height: 100px; overflow-y: scroll;">
-    <% @product.category.products.concern_products(@product).
-      order("RANDOM()").take(8).each do |product| %>
-      <%= render "shared/concern_product", product: product %>
-    <% end %>
+<div class="row">
+  <div class="col-sm-12">
+    <div><%= t "product.concern_products"%></div>
+    <div class="row" style="height: 100px; overflow-y: scroll;">
+      <% @product.category.products.concern_products(@product).
+        order("RANDOM()").take(8).each do |product| %>
+        <%= render "shared/concern_product", product: product %>
+      <% end %>
+    </div>
   </div>
 </div>
 <br>
-<div class="container row">
-  <div class="well">
-    <p>Detail:</p>
-    <p><%= @product.detail %></p>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="well">
+      <p><%= t "product.detail"%>:</p>
+      <p><%= @product.detail %></p>
+    </div>
   </div>
 </div>
 <div id="products-<%= @product.id %>">
   <div id="comment-form">
-  	<%= render 'shared/comment_form' if user_signed_in? %>
+    <%= render 'shared/comment_form' if user_signed_in? %>
   </div>
   <div class="col-md-8">
       <% if @product.comments.any? %>
-        Comments:
+        <%= t "comments" %>:
         <strong id="comment_number">
           <%= @product.comments.count %>
         </strong>
         <ol class="products">
-        	<div id = 'comments'>
-  	        <%= render @comments %>
-  	   	</div>
+          <div id = 'comments'>
+            <%= render @comments %>
+        </div>
          </ol>
         <%= paginate @comments %>
       <% end %>

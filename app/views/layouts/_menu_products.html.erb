@@ -1,0 +1,18 @@
+<ul class="menu_products">
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      <span class="glyphicon glyphicon-th-list"></span><%= t "all_categories" %><b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu list-group">
+    <% @catgories = Category.all %>
+      <% unless @catgories.nil? %>
+        <% @catgories.each do |category| %>
+          <%= link_to category_path(category) do %>
+            <li class = "list-group-item" ><span class="glyphicon glyphicon-asterisk"></span><%= t(category.name) %></li>
+          <% end %>
+        <% end %>
+      <% end %>
+    </ul>
+  </li>
+</ul>
+<hr>

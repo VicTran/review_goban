@@ -4,41 +4,40 @@
   <div class="col-md-offset-3 col-md-6">
     <%= form_for resource, as: resource_name, url: registration_path(resource_name), html:{method: :put} do |f| %>
       <%= devise_error_messages! %>
-      <%= f.label :name %><br/>
+      <%= f.label :name, t("user.name") %><br/>
       <%= f.text_field :name, autofocus: true, class: "form-control" %>
 
-      <%= f.label :email %><br/>
+      <%= f.label :email, t("user.email") %><br/>
       <%= f.email_field :email, autofocus: true, class: "form-control"  %>
 
-      <%= f.label :country %><br/>
+      <%= f.label :country, t("user.country") %><br/>
       <%= f.text_field :country, class: "form-control" %>
 
-      <%= f.label :state %><br/>
+      <%= f.label :state, t("user.state") %><br/>
       <%= f.text_field :state, class: "form-control" %>
 
-      <%= f.label :phone %><br/>
+      <%= f.label :phone, t("user.phone") %><br/>
       <%= f.text_field :phone, class: "form-control" %>
 
-      <%= f.label :birthday %><br/>
+      <%= f.label :birthday, t("user.birthday") %><br/>
       <%= f.date_field :birthday, class: "form-control" %>
 
       <span class="picture">
-        <%= f.label :picture, "Your image" %><br/>
+        <%= f.label :picture, t("user.your_image") %><br/>
         <%= f.file_field :picture, accept: "image/jpeg,image/gif,image/png" %>
       </span>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div><%= t :waiting, content: resource.unconfirmed_email %></div>
       <% end %>
-      <%= f.label :password %><i><%= t :rule %></i><br/>
+      <%= f.label :password, t("user.password") %><br/>
       <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-      <%= f.label :password_confirmation %><br/>
+      <%= f.label :password_confirmation, t("user.password_confirmation") %><br/>
       <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
-      <%= f.label :current_password %>
-      <i><%= t :current_password %></i><br/>
+      <%= f.label :current_password, t("user.current_password") %><br/>
       <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
       <div class="actions">
-        <%= f.submit "Update", class: "btn-primary" %>
+        <%= f.submit t("user.edit"), class: "btn-primary" %>
       </div>
     <% end %>
     <%= link_to t(:back), :back %>

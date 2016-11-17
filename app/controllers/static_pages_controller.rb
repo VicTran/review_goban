@@ -1,6 +1,5 @@
 class StaticPagesController < ApplicationController
   def home
-    @catgories = Category.all
-    @products = Product.display.sorted_by_price_rating
+    @products = Product.display.sorted_by_price_rating.take 9
   end
 end

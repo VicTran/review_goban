@@ -1,17 +1,17 @@
 <div class="panel-body">
   <%= search_form_for @search, url: admin_users_path do |f| %>
     <div class="row">
-      <div class="large-5 small-4 col-sm-3">
+      <div class="large-5 small-4 col-sm-4">
         <%= f.label :name_cont, t("search.user.name") %>
         <%= f.text_field :name_cont, class: "form-control",
           placeholder: t("search.user.name") %>
       </div>
-      <div class="large-5 small-4 col-sm-3">
+      <div class="large-5 small-4 col-sm-4">
         <%= f.label :email_cont, t("search.user.email") %>
         <%= f.text_field :email_cont, class: "form-control",
           placeholder: t("search.user.email") %>
       </div>
     </div>
-    <%= f.submit "Search", class: "btn btn-success col-sm-2" %>
+    <%= f.submit t("search.button"), class: "btn btn-success col-sm-2" %>
   <% end %>
 </div>
