@@ -27,32 +27,31 @@
 
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
+      <span class="sr-only"><%= t "previous" %></span>
     </a>
     <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
       <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
+      <span class="sr-only"><%= t "next" %></span>
     </a>
     </div>
 </div>
 
   <div class="col-sm-4">
     <div class="well">
-      <p>Category: <%= @product.category.name %></p>
-      <p>Name: <%= @product.name %></p>
-      <p>Price: <%= @product.price %></p>
+      <p><%= t "product.category" %>: <%= @product.category.name %></p>
+      <p><%= t "product.name" %>: <%= @product.name %></p>
+      <p><%= t "product.price" %>: <%= @product.price %></p>
       <%= rating_for @product, "price", star: 5, disable_after_rate: false %>
-      <%= @product.average("price").nil? ? "0" : @product.average("price").avg %>
       <p><%= @product.rates("price").count %></p>
-      <p>Description: <%= @product.description%></p>
+      <p><%= t "product.description" %>: <%= @product.description%></p>
     </div>
   </div>
 
     <div class="col-sm-4">
     <div class="well">
-      <p>Thong tin khuyen mai</p>
-      <p>Promotion: <%= @product.promotion.nil? ? "No" :
-        (@product.promotion.to_s + " %") %></p>
+      <p><%= t "product.promotion_info" %></p>
+      <p><%= t "product.promotion" %>: <%= @product.promotion.nil? ?
+        t("no_") : (@product.promotion.to_s + " %") %></p>
       <hr>
     </div>
   </div>
@@ -61,14 +60,14 @@
 <br>
 <div class="container row">
   <div class="well">
-    <p>Detail:</p>
+    <p><%= t "product.detail" %>:</p>
     <p><%= @product.detail %></p>
   </div>
 </div>
 <div id="products-<%= @product.id %>">
   <div class="col-md-8">
       <% if @product.comments.any? %>
-        Comments:
+        <%= t "comments" %>:
         <strong id="comment_number">
           <%= @product.comments.count %>
         </strong>

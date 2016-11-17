@@ -1,9 +1,15 @@
-<div class="col-sm-4">
+<div class="col-sm-3">
   <div class="well well-sm">
-    <%= image_tag product.image, height:"50" %>
-    <p><%= link_to product.name, product_path(product) %></p>
-    <%= rating_for product, "price", star: 5, disable_after_rate: false %>
-    <p><%= product.price %></p>
+    <div class="product-image item">
+      <%= link_to product_path(product) do %>
+      <%= image_tag product.image, height:"200" %>
+      <% end %>
+    </div>
+    <div class="product-info">
+      <p><%= link_to product.name, product_path(product) %></p>
+      <%= rating_for product, "price", star: 5, disable_after_rate: false %>
+      <p><%= product.price %></p>
+    </div>
   </div>
 </div>
 

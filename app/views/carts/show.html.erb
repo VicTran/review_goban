@@ -1,18 +1,35 @@
-<div style = "padding-top: 100px">
-  <%= form_for @cart do |f| %>
-    <%= f.fields_for :order_items do |ff| %>
-      <div class="input-group fields">
-        <span class="input-group-addon input-group-addon-2">
-          <%= link_to ff.object.product.name, product_path(ff.object.product) %>
-        </span>
-        <span class="input-group-addon"><%= ff.number_field :number, class: "form-control", disabled: true %></span>
-        <span class="input-group-addon"><%= ff.object.product.price %></span>
-        <span class="input-group-addon"><%= ff.object.sum_price %></span>
-      </div>
-    <% end %>
-    <hr>
-    Total Price: <%= f.object.sum_price %>
-    <hr>
+<%= form_for @cart do |f| %>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th class="center"><%= t "product.name" %></th>
+        <th class="center"><%= t "product.number" %></th>
+        <th class="center"><%= t "product.price" %></th>
+        <th class="center"><%= t "product.promotion" %></th>
+        <th class="center"><%= t "product.total_price" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= f.fields_for :order_items do |ff| %>
+        <tr>
+          <td>
+            <%= link_to ff.object.product.name, product_path(ff.object.product) %>
+          </td>
+          <td>
+            <%= ff.number_field :number, class: "form-control",disabled: true %>
+          </td>
+          <td><%= ff.object.product.price %></td>
+          <td><%= ff.object.product.promotion %> %</td>
+          <td><%= ff.object.sum_price %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <hr>
+    <h1 style="text-align:right">
+      <%= t("product.total_price") %>: <%= f.object.sum_price %>
+    </h1>
+  <hr>
     <div class="row">
       <div class="col-sm-4 col-md-4">
         <%= link_to root_path, class: "btn btn-primary" do %>
@@ -20,5 +37,5 @@
         <% end %>
       </div>
     </div>
-  <% end %>
+<% end %>
 </div>

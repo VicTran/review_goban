@@ -11,7 +11,7 @@
                 <%= form_for([ @product, @comment]) do |f| %>
                   <%= render 'shared/error_messages', object: f.object %>
                   <%= f.text_area :content %>
-                  <%= f.submit "Edit", class: "btn btn-primary" %>
+                  <%= f.submit t("edit"), class: "btn btn-primary" %>
                 <% end %>
             </div>
             </div>

@@ -1,21 +1,29 @@
-<div style = "padding-top: 100px">
-  <%= form_for @current_order, url: guest_orders_path(guest_order_id: @current_order.id),
-    method: :post do |f| %>
-        <div class="input-group fields">
-  <span class="input-group-addon input-group-addon-2">
-    Name
-  </span>
-  <span class="input-group-addon">Number</span>
-  <span class="input-group-addon">Prict</span>
-  <span class="input-group-addon">Total Price</span>
-  <span class="input-group-addon">
-    Action
-  </span>
-</div>
-    <%= f.fields_for :orders do |order_item| %>
-      <%= render "order_fields", ff: order_item %>
-    <% end %>
+<%= javascript_include_tag 'cart' %>
+  <%= form_for @current_order, url: guest_orders_path(guest_order_id:
+    @current_order.id), method: :post do |f| %>
+    <table class="table table-bordered table-striped table-condensed">
+      <thead>
+        <tr>
+          <th class="center"><%= t "product.name" %></th>
+          <th class="center"><%= t "product.number" %></th>
+          <th class="center"><%= t "product.price" %></th>
+          <th class="center"><%= t "product.promotion" %></th>
+          <th class="center"><%= t "product.total_price" %></th>
+          <th class="center"><%= t "product.action" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= f.fields_for :orders do |order| %>
+          <%= render "order_fields", ff: order %>
+        <% end %>
+        <tr class="center"><td colspan="6">
+          <%= t("cart.have_not_product") if @current_order.orders.empty? %>
+        </td></tr>
+      </tbody>
+    </table>
+    <hr>
+    <%= t "guest_order.total_price" %>: <%= f.object.sum_price %>
     <%= f.submit t(:order), class: "btn btn-primary" %>
   <% end %>
-</div>
+
 

@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include CanCan::ControllerAdditions
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
+  layout :layout_by_resource
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:danger] = t "not_authorized"
@@ -48,5 +49,21 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update) {|u| u.permit(:name,
       :email, :password, :password_confirmation, :picture, :gender,
       :country, :state, :phone, :current_password, :birthday)}
+  end
+
+  def layout_by_resource
+    if  user_signed_in? && current_user.admin?
+      "admin_application"
+    elsif user_signed_in? && !current_user.admin?
+      "application"
+    end
+  end
+
+  def after_sign_in_path_for(resource)
+    if current_user.admin?
+      admin_root_path
+    else
+      super
+    end
   end
 end

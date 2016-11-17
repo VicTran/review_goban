@@ -1,12 +1,12 @@
 <tr>
   <td class="center"><%= cart.updated_at %></td>
-  <td class="center"><%= cart.status == 1 ? "Da ma" : "Chua mua" %></td>
+  <td class="center"><%= cart.status == 1 ? t("cart.bought") : t("cart.not_buy") %></td>
   <td class="center"><%= cart.sum_price %></td>
   <td>
     <% if cart.status == 1 %>
-      <%= link_to "show", cart_path(cart) %>
+      <%= link_to t("cart.show"), cart_path(cart) %>
     <% else %>
-      <%= link_to "Show", new_cart_path %>
+      <%= link_to t("cart.show"), new_cart_path %>
     <% end %>
   </td>
 </tr>

@@ -4,12 +4,14 @@
   <span><%= comment.user.name %></span>:
   <span class="content"><%= comment.content %></span>
   <span class="timestamp">
-    Posted: <%= time_tag comment.created_at %>
+    <%= t ("posted") %>: <%= time_tag comment.created_at %>
     <% if current_user?(comment.user) %>
-      <%= link_to "Delete || ", product_comment_path(@product, comment), method: :delete, remote: true,
-        data: { confirm: "You sure?" } %>
-    <% end %>
-    <a href="#" data-toggle="modal" data-target="#myModal-<%= comment.id %>">Edit</a>
+      <%= link_to t("delete"), product_comment_path(@product, comment), method: :delete, remote: true,
+        data: { confirm: t("confirm")} %>
+    <% end %>||
+    <a href="#" data-toggle="modal" data-target="#myModal-<%= comment.id %>">
+      <%= t :edit %>
+    </a>
   </span>
 </li>
 
@@ -24,7 +26,7 @@
                 <%= form_for([ @product, @comment]) do |f| %>
                   <%= render 'shared/error_messages', object: f.object %>
                   <%= f.text_area :content %>
-                  <%= f.submit "Edit", class: "btn btn-primary" %>
+                  <%= f.submit t("edit"), class: "btn btn-primary" %>
                 <% end %>
             </div>
             </div>
