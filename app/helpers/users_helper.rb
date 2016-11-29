@@ -16,10 +16,10 @@ module UsersHelper
     gravatar_id = Digest::MD5::hexdigest user.email.downcase
     if user.picture?
       gravatar_url = user.picture.url
-      image_tag gravatar_url, height: 200, weight: 200, alt: User.name
+      image_tag gravatar_url, height: 200, width: 200, alt: User.name, class: "img-circle"
     else
       gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{100}"
-      image_tag gravatar_url, alt: user.name, class: "gravatar"
+      image_tag gravatar_url, alt: user.name, class: "gravatar img-circle"
     end
   end
 end

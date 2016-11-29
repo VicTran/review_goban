@@ -70,6 +70,8 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.7.0)
+    flexslider (2.2.0)
+      sass-rails (>= 3.1.0)
     font-awesome-sass (4.7.0)
       sass (>= 3.2)
     globalid (0.3.7)
@@ -191,6 +193,7 @@ DEPENDENCIES
   carrierwave (= 0.10.0)
   coffee-rails (~> 4.1.0)
   devise
+  flexslider
   font-awesome-sass
   jbuilder (~> 2.0)
   jquery-rails

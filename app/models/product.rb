@@ -10,9 +10,16 @@ class Product < ActiveRecord::Base
   validates :description, presence: true, length: {maximum: 200}
   validates :detail, presence: true
   validates :price, presence: true
+  validates :image, presence: true
+  before_save :upcase_name
 
   scope :concern_products, -> product{where.not id: product.id}
   scope :display, ->{where is_display: true}
   scope :not_display, ->{where is_display: false}
   scope :sorted_by_price_rating, ->{joins(:price_average).order('rating_caches.avg DESC')}
+  private
+
+  def upcase_name
+    self.name = self.name.mb_chars.upcase.to_s
+  end
 end

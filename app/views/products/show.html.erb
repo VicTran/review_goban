@@ -1,69 +1,117 @@
-<div class="row">
-<div class="col-sm-4">
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <% unless @product.product_images.nil? %>
-        <% @product.product_images.each do |index, image| %>
-          <li data-target="#myCarousel" data-slide-to="<%= index %>"></li>
+<script src="app/assets/javascripts/jquery.flexslider-min.js"></script>
+<div class="row bg-white">
+<div class="col-lg-12 bg-white mgTop">
+<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 tit-des-detail">
+  <h1><%= @product.name %></h1>
+  <div class="img-product-detail col-lg-5 col-md-5 col-sm-6 col-xs-12 paddingLNone">
+  <section class="slider">
+    <div class="flexslider">
+      <ul class="slides">
+        <% unless @product.product_images.nil? %>
+          <% @product.product_images.each do |image| %>
+            <li>
+              <img class = "img-rounded" src="<%= image.image%>", height= "300px"/>
+            </li>
+          <% end %>
         <% end %>
-      <% end %>
-    </ol>
+      </ul>
+    </div>
+  </section>
+  </div>
+  <div id="ctl00_ContentPlaceHolder1_infoprice" class="info-product-detail col-lg-7 col-md-7 col-sm-6 col-xs-12 paddingLNone paddingRNone">
+    <div class="info-price">
+      <div>
+        <div class="modeldetail">
+          <b><%= t "product.category" %>:
+          </b><%= link_to @product.category.name, category_path(@product.category)%>
+        </div>
+        <div class="product-info">
+        <ul class="product-summary">
+          <li>
+            -<%= t "product.description"%>: <%= @product.description %>
+          </li>
+          <li>-<%= t "product.promotion"%>: <%= @product.promotion.nil? ? t("no") :
+        (@product.promotion.to_s + " %") %>
+          </li>
+         <li>-<%= t "product.detail" %>: <%= @product.detail %>%
+          </li>
+        </ul>
+        Ratting: <%= rating_for @product, "price", star: 5, disable_after_rate: false %>
+        </div>
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item active center">
-        <%= image_tag @product.image, height: "40", with: "100" %>
+        <div class="func_stock">
+        </div>
       </div>
-      <% unless @product.product_images.nil? %>
-        <% @product.product_images.each do |image| %>
-          <div class="item">
-            <%= image_tag image.image, height: "40", with: "100" %>
+      <div class="clearfix"></div>
+        <div id="ctl00_ContentPlaceHolder1_pricedetail" class="price-detail">
+          <div class="price-dt1">
           </div>
+          <div class="price-dt2">
+            <div class="">
+              <small class="price3">
+              <%= (1- @product.promotion.to_f/100) * @product.price %> $
+              </small>
+              <span class="gkm"></span>
+          </div>
+        </div>
+        <div class="price-vat">
+            Price include VAT
+        </div>
+      </div>
+    </div>
+    <div class="ba-button">
+      <ul>
+        <li>
+          <% if user_signed_in? %>
+            <%= link_to t("product.order"), new_cart_path(product_id:
+              @product.id) ,class: "buynow calltobuy" %>
+          <% else %>
+            <%= link_to t("product.order"), new_guest_order_path(product_id: @product.id), class: "buynow calltobuy" %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="comment-div">
+    <div id="products-<%= @product.id %>">
+  <div id="comment-form">
+    <%= render 'shared/comment_form' if user_signed_in? %>
+  </div>
+  <div>
+      <% if @product.comments.any? %>
+        <%= t "comments" %>:
+        <strong id="comment_number">
+          <%= @product.comments.count %>
+        </strong>
+        <ol class="products">
+          <div id = 'comments'>
+            <%= render @comments %>
+        </div>
+         </ol>
+        <%= paginate @comments %>
+      <% end %>
+  </div>
+</div>
+  </div>
+
+</div>
+<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+  <div class="relate-product">
+    <div class="title-product-detail">
+      <div class="title tit-relate-product">
+        <a>sản phẩm tham khảo</a>
+      </div>
+    </div>
+    <div>
+      <% @product.category.products.concern_products(@product).
+        order("RANDOM()").take(4).each do |product| %>
+        <%= render "shared/concern_product", product: product %>
         <% end %>
-      <% end %>
-    </div>
-
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-    </div>
-</div>
-
-  <div class="col-sm-4">
-    <div class="well">
-      <p><%= t "product.category"%>: <%= @product.category.name %></p>
-      <p><%= t "product.name"%>: <%= @product.name %></p>
-      <p><%= t "product.price"%>: <%= @product.price %></p>
-      <%= rating_for @product, "price", star: 5, disable_after_rate: false %>
-      <p><%= t "product.rate_count"%>:<%= @product.rates("price").count %></p>
-      <p><%= t "product.description"%>: <%= @product.description%></p>
-    </div>
-  </div>
-
-    <div class="col-sm-4">
-    <div class="well">
-      <p><%= t "product.promotion_info"%></p>
-      <p><%= t "product.promotion"%>: <%= @product.promotion.nil? ? t("no") :
-        (@product.promotion.to_s + " %") %></p>
-      <hr>
-      <% if user_signed_in? %>
-        <%= link_to t("product.order"), new_cart_path(product_id:
-          @product.id) ,class: "btn btn-default" %>
-      <% else %>
-        <%= link_to t("product.order"), new_guest_order_path(product_id:
-          @product.id), class: "btn btn-default" %>
-      <% end %>
     </div>
   </div>
 </div>
-<br>
+</div>
+<!-- <br>
 <div class="row">
   <div class="col-sm-12">
     <div><%= t "product.concern_products"%></div>
@@ -103,3 +151,11 @@
       <% end %>
   </div>
 </div>
+ -->
+<script type="text/javascript" charset="utf-8">
+  $(window).load(function() {
+  $('.flexslider').flexslider({
+    animation: "slide"
+  });
+});
+</script>

@@ -15,9 +15,9 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find_by id: params[:id]
     if @comment.update_attributes comment_params
-      flash[:success] = ""
+      flash[:success] = "edit comment success"
     else
-      flash[:danger] = ""
+      flash[:danger] = "edit comment unsuccess"
     end
     redirect_to product_path(@comment.product)
   end
@@ -36,6 +36,6 @@ class CommentsController < ApplicationController
   end
   private
   def comment_params
-    params.require(:comment).permit( :content)
+    params.require(:comment).permit( :content, :image)
   end
 end

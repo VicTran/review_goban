@@ -1,5 +1,5 @@
 <%= javascript_include_tag 'cart' %>
-<div style = "padding-top: 100px">
+<div class="bg-white">
 <%= form_for @cart do |f| %>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -22,17 +22,11 @@
     </tbody>
   </table>
   <hr>
-    <%= t("product.total_price") %>: <%= f.object.sum_price %>
+    <h2><%= t("product.total_price") %>: <%= f.object.sum_price %></h2>
     <hr>
-    <div class="row">
-      <div class="col-sm-4 col-md-4">
-        <%= link_to new_cart_path, class: "btn btn-primary" do %>
-          <%= t :back_to_cart %>
-        <% end %>
-      </div>
-      <div class="col-sm-4 col-md-4">
-        <%= f.submit t("cart.buy"), class: "btn btn-primary" %>
-      </div>
-    </div>
+    <%= link_to new_cart_path, class: "btn btn-primary" do %>
+      <%= t :back_to_cart %>
+    <% end %>
+    <%= f.submit t("cart.buy"), class: "btn btn-primary" %>
 <% end %>
 </div>

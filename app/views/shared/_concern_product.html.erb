@@ -1,13 +1,21 @@
-<div class="col-sm-3">
-  <div class="well well-sm">
-    <div style="display: inline-block">
-      <%= image_tag product.image, height: "50" %>
-    </div>
-    <div style="display: inline-block">
-      <span><%= link_to product.name, product_path(product) %></span>
-      <br>
-      <span class="content">Price: <%= product.price %></span>
-    </div>
-  </div>
-</div>
+<div id="ctl00_ContentPlaceHolder1_ListProductHome1_rptData_ctl00_productline" class="col-lg-15 col-md-3 col-sm-3 col-xs-3 border-lb grid-product border-rb product" style="width:100%">
+  <div class="fixed-image owl-item">
+    <%= link_to product_path(product) do %>
+      <%= image_tag product.image, height:"150", width: "150" %>
+    <% end %>
+    <span id="ctl00_ContentPlaceHolder1_ListProductHome1_rptData_ctl00_ltdiscount" class="ldiscount">
+      <%= t "product.promotion" %>: <%= product.promotion %>%
+    </span>
+    <div id="ctl00_ContentPlaceHolder1_ListProductHome1_rptData_ctl00_iconpromo" class="ico-promotion">+ <%= t "product.promotion" %></div>
+        </div>
+        <div class="product-name">
+          <%= link_to product.name, product_path(product) %>
+        </div>
+        <%= rating_for product, "price", star: 5, disable_after_rate: false %>
+        <b>
+          <%= t "product.price"%>: <%= product.price %> $
+        </b><small class="real-price">
+            <%= (1 - product.promotion.to_f/100) * product.price %> $
+        </small>
 
+</div>

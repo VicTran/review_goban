@@ -27,7 +27,7 @@
       <%= f.number_field :price, class: "form-control", min: 1000, step: 1000 %>
 
       <%= f.label :promotion, t("product.promotion") %><br/>
-      <%= f.number_field :promotion, class: "form-control", in: 0.0..100.0, step: 0.5 %>
+      <%= f.number_field :promotion, class: "form-control", in: 0.0..100.0, step: 1 %>
 
       <%= f.label :is_display, t("product.is_display") %><br/>
       <%= f.check_box :is_display, class: "form-control"%>

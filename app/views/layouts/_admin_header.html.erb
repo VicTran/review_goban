@@ -1,43 +1,76 @@
-<header class="navbar navbar-fixed-top navbar-default">
-  <div class="container">
-    <%= link_to t(:logo), admin_root_path, id: "logo" %>
-    <div id = "search_header">
-      <% @products = Product.all %>
-      <% @search = @products.ransack params[:q] %>
-      <%= search_form_for @search, url: searchs_path, method: :get do |f| %>
-        <%= f.text_field :name_cont, placeholder: t("product.input_name"),
-          class: "form-control" %>
-      <% end %>
-    </div>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to t(:home), admin_root_path %></li>
-        <% if user_signed_in? %>
-          <li class="avatar_header">
-            <%= gravatar_for current_user %>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <%= current_user.name %><b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to t(:setting), edit_user_registration_path %></li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to t("user.log_out"), destroy_user_session_path,
+<div class="row bg-blue2">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="login-header">
+          <ul class="flLeft">
+              <li class="hidden-xxs"></li>
+              <li><a href="tel:1900545546">Mua hàng: 1900 545 546</a></li>
+              <li class="hidden-lg hidden-md hidden-sm hidden-xm hidden-xs">| </li>
+              <li class="hidden-xs hidden-xxs"></li>
+              <li class="hidden-xs"><a href="tel:0963649191">Hotline: 0963 64 9191</a></li>
+              <li class="hidden-lg hidden-md hidden-sm hidden-xm so-doc">|</li>
+              <li class="hidden-xxs"></li>
+              <li><a href="tel:1900545545">CSKH: 01635439157</a></li>
+          </ul>
+
+          <ul id="ctl00_header1_login" class="flRight">
+            <% if user_signed_in? %>
+              <li class="hidden-xs hidden-sm">
+                <%= current_user.name %>
+              </li>
+              <li class="hidden-xs hidden-sm">
+                <li><%= link_to t("cart.all_carts"), carts_path %></li>
+              </li>
+              <li class="hidden-xs hidden-sm">
+                <li><%= link_to t("cart.current_cart"), new_cart_path %></li>
+              </li>
+              <li class="hidden-xs hidden-sm">
+                 <li><%= link_to t("user.profile"), user_path(current_user) %></li>
+              </li>
+              <li class="hidden-xs hidden-sm">
+                 <li><%= link_to t("user.edit"), edit_user_registration_path %></li>
+              </li>
+              <li class="hidden-xs hidden-sm">
+               <%= link_to t("user.log_out"), destroy_user_session_path,
                   method: :delete %>
               </li>
-            </ul>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to t("user.login"), new_user_session_path %>
-          </li>
-          <li>
-            <%= link_to t("user.sign_up"), new_user_registration_path %>
-          </li>
-        <% end %>
-      </ul>
-    </nav>
+            <% else %>
+              <li class="hidden-xs hidden-sm">
+                <%= link_to t("order"), new_guest_order_path %>
+              </li>
+              <li class="hidden-xs hidden-sm">
+                <%= link_to t("login"), new_user_session_path %>
+              </li>
+              <li class="hidden-xs hidden-sm"></li>
+              <li class="hidden-xs hidden-sm">
+                <%= link_to t("sign_up"), new_user_registration_path %>
+              </li>
+            <% end %>
+          </ul>
+      </div>
   </div>
-</header>
+</div>
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-blue">
+    <div class="col-lg-3 col-md-3 col-xm-3 col-sm-3 col-xs-12">
+      <div class="logo">
+        <a href="https://www.trananh.vn/">
+        <img width="200" height="38" src="https://lib.trananh.com.vn/img/logo.png" alt="Hệ thống điện máy Trần Anh">
+        </a>
+      </div>
+    </div>
+    <div class="col-lg-9 col-md-9 col-xm-9 col-sm-9 col-xs-12 hidden-xs">
+      <div class="menu-logo">
+        <ul>
+          <li class="hidden-ss hidden-sm">
+            <a href="https://www.trananh.vn/tin-tuc/gioi-thieu-cong-ty/gioi-thieu-chung-n1">INTRODUCTION</a>
+          </li>
+          <li class="hidden-ss hidden-sm"><a href="https://www.trananh.vn/tin-tuc/tin-tuc-c701">NEWS</a></li>
+          <li class="hidden-ss"><a href="https://www.trananh.vn/tin-tuc/review-san-pham-c1166">REVIEW PRODUCTS</a></li>
+          <li class="hidden-ss"><a href="https://www.trananh.vn/tin-tuc/kinh-nghiem-hay-c1214">EXPERIENCE</a></li>
+          <li class="hidden-ss"><a href="https://www.trananh.vn/tin-tuc/qua-tang-nhat-ban-c1222">PRESENT</a></li>
+          <li class="hidden-ss hidden-sm"><a href="https://www.trananh.vn/tuyen-dung">RECRUITMENT</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

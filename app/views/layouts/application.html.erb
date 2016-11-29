@@ -9,15 +9,14 @@
     <%= render "layouts/shim" %>
   </head>
   <body class="nav-md">
+    <div class="container">
     <%= render "layouts/header" %>
     <br>
-    <div class="container">
-      <%= render "layouts/menu_products" %>
-      <% flash.each do |message_type, message| %>
+    <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
       <%= yield %>
+      <%= render "layouts/footer" %>
     </div>
-    <%= render "layouts/footer" %>
   </body>
 </html>

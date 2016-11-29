@@ -1,17 +1,21 @@
 <% @comment = comment %>
 <li id="comment-<%= comment.id %>">
   <%= gravatar_for comment.user %>
-  <span><%= comment.user.name %></span>:
+  <% unless  comment.image.file.nil? %>
+    <%= image_tag comment.image, height: "100", with: "100" %>
+  <% end %>
   <span class="content"><%= comment.content %></span>
+  <br>
   <span class="timestamp">
     <%= t ("posted") %>: <%= time_tag comment.created_at %>
     <% if current_user?(comment.user) %>
       <%= link_to t("delete"), product_comment_path(@product, comment), method: :delete, remote: true,
-        data: { confirm: t("confirm")} %>
-    <% end %>||
-    <a href="#" data-toggle="modal" data-target="#myModal-<%= comment.id %>">
+        data: { confirm: t("confirm")} %>||
+      <a href="#" data-toggle="modal" data-target="#myModal-<%= comment.id %>">
       <%= t :edit %>
     </a>
+    <% end %>
+
   </span>
 </li>
 
@@ -22,10 +26,12 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body row">
-            <div style="margin: 30px;">
+            <div style="margin: 0 30px 0 30px;">
                 <%= form_for([ @product, @comment]) do |f| %>
                   <%= render 'shared/error_messages', object: f.object %>
-                  <%= f.text_area :content %>
+                  <%= f.text_area :content, class: "form-control" %>
+                  <%= f.file_field :image, class: "form-control" %>
+                  <br>
                   <%= f.submit t("edit"), class: "btn btn-primary" %>
                 <% end %>
             </div>
@@ -68,7 +74,4 @@ $('a[href*=#]:not([href=#])').click(function() {
       }
     }
 });
-
 </script>
-
-
