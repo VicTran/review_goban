@@ -55,11 +55,6 @@
 <div class="row">
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-blue">
     <div class="col-lg-3 col-md-3 col-xm-3 col-sm-3 col-xs-12">
-      <div class="logo">
-        <%= link_to home_path do %>
-          <img width="200" height="38" src="https://lib.trananh.com.vn/img/logo.png" alt="Hệ thống điện máy Trần Anh">
-        <% end %>
-      </div>
     </div>
     <div class="col-lg-9 col-md-9 col-xm-9 col-sm-9 col-xs-12 hidden-xs">
       <div class="menu-logo">
@@ -92,7 +87,11 @@
               <% unless @catgories.nil? %>
                 <% @catgories.each do |category| %>
                   <%= link_to category_path(category) do %>
-                    <li class = "list-group-item" ><span class="glyphicon glyphicon-asterisk"></span> <%= t(category.name) %></li>
+                    <li class = "list-group-item" >
+                    <% unless category.image.file.nil? %>
+                      <%= image_tag category.image, height:"30", width: "30"  %>
+                    <% end %>
+                    <%= t(category.name) %></li>
                   <% end %>
                 <% end %>
               <% end %>
