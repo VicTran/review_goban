@@ -24,7 +24,7 @@ end
 
 10.times do |n|
   Category.create( name: "Camera #{n+1}",
-    image: File.open("/home/duytung/Ki 9/ITJP/download (1).jpg"),
+    image: File.open("/home/duytung/Ki 9/ITJP/pc_icon.png"),
     content: "Camera #{n+1}")
 end
 cate = Category.order(:created_at)

@@ -17,6 +17,8 @@ class Product < ActiveRecord::Base
   scope :display, ->{where is_display: true}
   scope :not_display, ->{where is_display: false}
   scope :sorted_by_price_rating, ->{joins(:price_average).order('rating_caches.avg DESC')}
+  scope :get_by_minimun_star, ->star{joins(:price_average).where('rating_caches.avg >= ?', star)}
+  scope :get_by_maximun_star, ->star{joins(:price_average).where('rating_caches.avg <= ?', star)}
   private
 
   def upcase_name
