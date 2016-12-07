@@ -18,6 +18,12 @@
         <%= f.label :promotion_lteq, t("search.product.to_promotion") %>
         <%= f.number_field :promotion_lteq, class: "form-control",in: 0.0..100.0, step: 1 %>
       </div>
+      <div class="large-5 small-4 col-sm-3 center">
+        <%= f.label :star_minimun, "Star From"%>
+        <%= number_field_tag :star_minimun, @star_minimun ,min: 0, max: 5, step: 1, class: "form-control"%>
+        <%= f.label :star_maximun, "Star To"%>
+        <%= number_field_tag :star_maximun, @star_maximun ,min: 0, max: 5, step: 1, class: "form-control"%>
+      </div>
     </div>
     <%= f.submit t("search.button"), class: "btn btn-success col-sm-2" %>
   <% end %>
