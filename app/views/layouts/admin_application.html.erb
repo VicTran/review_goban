@@ -9,7 +9,9 @@
     <%= render "layouts/shim" %>
   </head>
   <body>
+    <header class="navbar navbar-fixed-top navbar-default">
     <%= render "layouts/admin_header" %>
+    </header>
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
@@ -24,7 +26,6 @@
         <% else %>
           <%= yield %>
         <% end %>
-        <%= render "layouts/footer" %>
       </div>
   </body>
 </html>

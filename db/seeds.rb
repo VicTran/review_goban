@@ -28,11 +28,12 @@ end
 cate = Category.order(:created_at)
 cate.each { |cate|
   10.times do |n|
-    product = cate.products.create(name: cate.name + "Product #{n+1}",
+    product = cate.products.create(
+      name: cate.name + " Product #{n+1}",
       user_id: User.first,
       description: "Product#{n+1} Product#{n+1} Product#{n+1}",
       detail: "detail#{n+1} detail#{n+1} detail#{n+1}",
-      image: File.open("/home/duytung/Ki 9/ITJP/download (1).jpg"),
+      image: File.open("/home/duytung/Ki 9/ITJP/laptop.jpg"),
       price: 10000,
       promotion: 2,
       is_display: true
@@ -44,7 +45,7 @@ product = Product.order(:created_at)
 product.each {|product|
   4.times do
     product.product_images.create(
-      image: File.open("/home/duytung/Ki 9/ITJP/download (1).jpg")
+      image: File.open("/home/duytung/Ki 9/ITJP/laptop.jpg")
     )
   end
 }

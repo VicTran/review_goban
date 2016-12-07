@@ -14,9 +14,9 @@
       </div>
       <div class="large-5 small-4 col-sm-3 center">
         <%= f.label :promotion_gteq, t("search.product.from_promotion")%>
-        <%= f.number_field :promotion_gteq, class: "form-control",in: 0.0..100.0, step: 0.5 %>
+        <%= f.number_field :promotion_gteq, class: "form-control",in: 0.0..100.0, step: 1 %>
         <%= f.label :promotion_lteq, t("search.product.to_promotion") %>
-        <%= f.number_field :promotion_lteq, class: "form-control",in: 0.0..100.0, step: 0.5 %>
+        <%= f.number_field :promotion_lteq, class: "form-control",in: 0.0..100.0, step: 1 %>
       </div>
     </div>
     <%= f.submit t("search.button"), class: "btn btn-success col-sm-2" %>

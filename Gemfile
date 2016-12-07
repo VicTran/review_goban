@@ -17,6 +17,7 @@ gem "kaminari-bootstrap", "~> 3.0.1"
 gem "ratyrate"
 gem "ransack"
 gem 'font-awesome-sass'
+gem 'flexslider'
 
 group :development, :test do
   gem "byebug"

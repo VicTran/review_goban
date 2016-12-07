@@ -16,5 +16,7 @@
 //= require_tree .
 //= require jquery.raty
 //= require ratyrate
+//= require jquery.flexslider
+//= require jquery.flexslider-min
 $('.datepicker').datepicker();
 $('.disable_input :text_field').prop('disabled', true);

@@ -1,43 +1,45 @@
-<div class="row">
-  <div class="col-sm-8" style="margin-left: 30">
-        <div class="">
-          <img src="https://cdn.pico.vn/Banner/2708_10-ngay-dai-ha-gia-777x301px.jpg" alt="Image">
-        </div>
+<div class="product-list">
+  <div class="row bg-white">
+      <div class="title-product">
+          <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12 padLeftNo padRightNo">
+              <div class="title">
+               <a href=""><%= t :top_rate %></a>
+              </div>
+          </div>
+          <div class="col-lg-10 col-md-9 col-sm-9 hidden-xs border-bt">
+              <div class="title-list-product">
+              </div>
+          </div>
+      </div>
   </div>
-  <div class="col-sm-3">
-    <div class="">
-      <img src="https://cdn.pico.vn/Banner/2727_373x147.jpg">
+  <div class="row bg-white">
+    <div class="col-lg-12 list-nm">
+      <div class="info-card">
+        <%= render @products %>
+      </div>
     </div>
   </div>
 </div>
-<hr class="style-one">
-
-<div class="container">
-<h1 style="text-align:left"><%= t :top_rate %></h1>
-  <div class="row">
-    <%= render @products %>
+<br>
+<div class="product-list">
+  <div class="row bg-white">
+      <div class="title-product">
+          <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12 padLeftNo padRightNo">
+              <div class="title">
+               <a href=""><%= t :top_new %></a>
+              </div>
+          </div>
+          <div class="col-lg-10 col-md-9 col-sm-9 hidden-xs border-bt">
+              <div class="title-list-product">
+              </div>
+          </div>
+      </div>
   </div>
-</div><br>
-<div class="container row">
-<div class="col-sm-4">
-  <div class="well">
-    <p>Lien he:</p>
-    <p>Cong ty co phan Blecom Viet Nam</p>
-    <p>Dia chi Bach Khoa Ha Noi</p>
+  <div class="row bg-white">
+    <div class="col-lg-12 list-nm">
+      <div class="info-card">
+        <%= render @products_new %>
+      </div>
+    </div>
   </div>
-</div>
-<div class="col-sm-4">
-  <div class="well">
-    <p>Cham soc khach hang</p>
-    <p>Bao hanh toan quoc</p>
-    <p>Giao hang nhanh gon</p>
-  </div>
-</div>
-<div class="col-sm-4">
-  <div class="well">
-    <p>Quan li tai khoan</p>
-    <p>Lay lai thong tin</p>
-    <p>Lich su mua hang</p>
-  </div>
-</div>
 </div>

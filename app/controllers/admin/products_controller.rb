@@ -1,6 +1,7 @@
 class Admin::ProductsController < ApplicationController
   load_and_authorize_resource
   def index
+    params[:q][:name_cont] = params[:q][:name_cont].strip.mb_chars.upcase.to_s
     @search = @products.ransack params[:q]
     if params[:q].nil?
       @products = @products.page(params[:page]).per 10
@@ -10,6 +11,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def show
+    @comments = @product.comments.page(params[:page]).per 10
   end
 
   def new
@@ -19,7 +21,6 @@ class Admin::ProductsController < ApplicationController
   def create
     @product = Product.new product_params
     @product.user = current_user
-    # byebug
     if @product.save
       unless params[:product_images].nil?
         params[:product_images][:image].each do |a|
@@ -32,7 +33,7 @@ class Admin::ProductsController < ApplicationController
       render "new"
     end
   end
-  
+
   def edit
   end
 
@@ -45,7 +46,7 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
-  
+
   def destroy
     if @product.destroy
       flash[:success] = t "message.delete_product_successful"

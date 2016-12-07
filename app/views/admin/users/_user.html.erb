@@ -2,8 +2,10 @@
   <td class="center"><%= user.name %></td>
   <td class="center"><%= user.email %></td>
   <td>
+  <% unless user.admin? %>
     <%= link_to t("user.delete"), admin_user_path(user),
       method: :delete, data: {confirm: t("user.confirm")},
       class: "btn btn-danger icon-trash icon-white" %>
+  <% end %>
   </td>
 </tr>

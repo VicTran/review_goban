@@ -1,6 +1,7 @@
 <tr>
   <td><%= link_to ff.object.product.name, product_path(ff.object.product) %></td>
-  <td><%= ff.number_field :number, class: "form-control"  %></td>
+  <td><%= ff.number_field :number, class: "form-control",
+    width: "100px", min: 0 %></td>
   <td><%= ff.object.product.price %></td>
   <td><%= ff.object.product.promotion %> %</td>
   <td><%= ff.object.sum_price %></td>
