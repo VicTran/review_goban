@@ -8,7 +8,10 @@
       <% unless @catgories.nil? %>
         <% @catgories.each do |category| %>
           <%= link_to category_path(category) do %>
-            <li class = "list-group-item" ><span class="glyphicon glyphicon-asterisk"></span><%= t(category.name) %></li>
+            <li class = "list-group-item" >
+            <%= image_tag category.image unless category.image.file.nil? %>
+            <%= t(category.name) %>
+            </li>
           <% end %>
         <% end %>
       <% end %>

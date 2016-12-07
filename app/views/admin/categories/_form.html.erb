@@ -9,6 +9,9 @@
       <%= f.label :content, t("category.content") %><br/>
       <%= f.text_field :content, class: "form-control" %>
 
+      <%= f.label :image, "Image"%>
+      <%= f.file_field :image, class: "form-control" %>
+
       <div class="actions">
         <%= f.submit t("category.submit"), class: "btn-primary" %>
       </div>
