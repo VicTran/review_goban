@@ -1,0 +1,4 @@
+<%= form_for current_user.bookmarks.build do |f| %>
+  <%= hidden_field_tag :product_id, @product.id %>
+  <%= f.submit "Bookmark", class: "btn btn-primary" %>
+<% end %>

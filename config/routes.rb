@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   resources :guest_orders, only: [:new, :create, :edit, :update, :show]
   resources :carts
   resources :users, only: :show
+  resources :bookmarks
 end
