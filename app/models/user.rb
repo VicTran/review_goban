@@ -20,8 +20,13 @@ class User < ActiveRecord::Base
   has_many :product, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :carts, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
   def password_required?
     new_record? ? super : false
+  end
+  def bookmark? product
+    bk = self.bookmarks.find_by product_id: product.id
+    return !bk.nil?
   end
   private
   def picture_size

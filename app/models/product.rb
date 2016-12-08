@@ -4,6 +4,7 @@ class Product < ActiveRecord::Base
   belongs_to :user
   has_many :product_images, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
   mount_uploader :image, PictureUploader
 
   validates :name, presence: true, length: {maximum: 50}
