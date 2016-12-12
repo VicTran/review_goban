@@ -14,7 +14,9 @@ module UsersHelper
 
   def show_user_picture user
     gravatar_id = Digest::MD5::hexdigest user.email.downcase
-    if user.picture?
+    if !user.avatar.nil?
+      image_tag user.avatar, alt: user.name, class: "gravatar img-circle", height: 200, width: 200
+    elsif user.picture?
       gravatar_url = user.picture.url
       image_tag gravatar_url, height: 200, width: 200, alt: User.name, class: "img-circle"
     else
