@@ -18,6 +18,7 @@ gem "ratyrate"
 gem "ransack"
 gem 'font-awesome-sass'
 gem 'flexslider'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem "byebug"

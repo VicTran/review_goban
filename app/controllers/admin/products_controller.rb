@@ -1,7 +1,7 @@
 class Admin::ProductsController < ApplicationController
   load_and_authorize_resource
   def index
-    params[:q][:name_cont] = params[:q][:name_cont].strip.mb_chars.upcase.to_s
+    params[:q][:name_cont] = params[:q][:name_cont].strip.mb_chars.upcase.to_s unless params[:q].nil?
     @search = @products.ransack params[:q]
     if params[:q].nil?
       @products = @products.page(params[:page]).per 10

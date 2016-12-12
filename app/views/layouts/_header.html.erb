@@ -75,7 +75,7 @@
 
 <div class="row">
     <div class="category">
-      <div id="ctl00_topbar1_colmd" class="col-lg-3 col-md-4 hidden-sm hidden-xs">
+      <div id="ctl00_topbar1_colmd" class="col-lg-2 col-md-3 hidden-sm hidden-xs">
         <div class="tit-list" id="hidden-toggler">
           <ul class="">
             <li class="dropdown">
@@ -100,7 +100,7 @@
             </ul>
         </div>
       </div>
-      <div class="col-lg-7 col-md-9 col-sm-9 col-xs-11">
+      <div class="col-lg-6 col-md-8 col-sm-8 col-xs-10">
         <div class="search-pro">
           <div class="input-group">
           <% @products = Product.all %>
@@ -115,6 +115,13 @@
               </div>
                 </div>
             </div>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+          <div class="search-pro">
+            <div class="input-group">
+              <%= link_to "Search Advance", advance_searchs_path, class: "btn btn-primary" %>
+            </div>
+          </div>
         </div>
     </div>
 </div>
