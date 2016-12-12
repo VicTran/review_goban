@@ -44,7 +44,7 @@
         </ul>
         Ratting: <%= rating_for @product, "price", star: 5, disable_after_rate: false %>
         </div>
-
+    <%= social_share_button_tag(@product.name, desc: @product.description ) %>
         <div class="func_stock">
         </div>
       </div>
@@ -117,47 +117,7 @@
   </div>
 </div>
 </div>
-<!-- <br>
-<div class="row">
-  <div class="col-sm-12">
-    <div><%= t "product.concern_products"%></div>
-    <div class="row" style="height: 100px; overflow-y: scroll;">
-      <% @product.category.products.concern_products(@product).
-        order("RANDOM()").take(8).each do |product| %>
-        <%= render "shared/concern_product", product: product %>
-      <% end %>
-    </div>
-  </div>
-</div>
-<br>
-<div class="row">
-  <div class="col-sm-12">
-    <div class="well">
-      <p><%= t "product.detail"%>:</p>
-      <p><%= @product.detail %></p>
-    </div>
-  </div>
-</div>
-<div id="products-<%= @product.id %>">
-  <div id="comment-form">
-    <%= render 'shared/comment_form' if user_signed_in? %>
-  </div>
-  <div class="col-md-8">
-      <% if @product.comments.any? %>
-        <%= t "comments" %>:
-        <strong id="comment_number">
-          <%= @product.comments.count %>
-        </strong>
-        <ol class="products">
-          <div id = 'comments'>
-            <%= render @comments %>
-        </div>
-         </ol>
-        <%= paginate @comments %>
-      <% end %>
-  </div>
-</div>
- -->
+
 <script type="text/javascript" charset="utf-8">
   $(window).load(function() {
   $('.flexslider').flexslider({
