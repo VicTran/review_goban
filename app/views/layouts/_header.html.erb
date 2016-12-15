@@ -18,28 +18,10 @@
           <ul id="ctl00_header1_login" class="flRight">
             <% if user_signed_in? %>
               <li class="hidden-xs hidden-sm">
-                <%= current_user.name %>
-              </li>
-              <li class="hidden-xs hidden-sm">
-                <li><%= link_to t("cart.all_carts"), carts_path %></li>
-              </li>
-              <li class="hidden-xs hidden-sm">
-                <li><%= link_to t("cart.current_cart"), new_cart_path %></li>
-              </li>
-              <li class="hidden-xs hidden-sm">
-                 <li><%= link_to t("user.profile"), user_path(current_user) %></li>
-              </li>
-              <li class="hidden-xs hidden-sm">
-                 <li><%= link_to t("user.edit"), edit_user_registration_path %></li>
-              </li>
-              <li class="hidden-xs hidden-sm">
                <%= link_to t("user.log_out"), destroy_user_session_path,
                   method: :delete %>
               </li>
             <% else %>
-              <li class="hidden-xs hidden-sm">
-                <%= link_to t("order"), new_guest_order_path %>
-              </li>
               <li class="hidden-xs hidden-sm">
                 <%= link_to t("login"), new_user_session_path %>
               </li>
@@ -55,18 +37,36 @@
 <div class="row">
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-blue">
     <div class="col-lg-3 col-md-3 col-xm-3 col-sm-3 col-xs-12">
+     <div class="logo">
+         <%= link_to root_path do%>
+         <%= image_tag "logo.png", width: "200", height: "38" %>
+         <% end %>
+       </div>
     </div>
     <div class="col-lg-9 col-md-9 col-xm-9 col-sm-9 col-xs-12 hidden-xs">
       <div class="menu-logo">
         <ul>
-          <li class="hidden-ss hidden-sm">
-            <a href="https://www.trananh.vn/tin-tuc/gioi-thieu-cong-ty/gioi-thieu-chung-n1">INTRODUCTION</a>
-          </li>
-          <li class="hidden-ss hidden-sm"><a href="https://www.trananh.vn/tin-tuc/tin-tuc-c701">NEWS</a></li>
-          <li class="hidden-ss"><a href="https://www.trananh.vn/tin-tuc/review-san-pham-c1166">REVIEW PRODUCTS</a></li>
-          <li class="hidden-ss"><a href="https://www.trananh.vn/tin-tuc/kinh-nghiem-hay-c1214">EXPERIENCE</a></li>
-          <li class="hidden-ss"><a href="https://www.trananh.vn/tin-tuc/qua-tang-nhat-ban-c1222">PRESENT</a></li>
-          <li class="hidden-ss hidden-sm"><a href="https://www.trananh.vn/tuyen-dung">RECRUITMENT</a></li>
+          <% if user_signed_in? %>
+            <li class="hidden-ss hidden-sm" style="color: white">
+                <%= current_user.name %>
+              </li>
+              <li class="hidden-ss hidden-sm">
+                <li><%= link_to t("cart.all_carts"), carts_path %></li>
+              </li>
+              <li class="hidden-ss hidden-sm">
+                <li><%= link_to t("cart.current_cart"), new_cart_path %></li>
+              </li>
+              <li class="hidden-ss hidden-sm">
+                 <li><%= link_to t("user.profile"), user_path(current_user) %></li>
+              </li>
+              <li class="hidden-ss hidden-sm">
+                 <li><%= link_to t("user.edit"), edit_user_registration_path %></li>
+              </li>
+          <% else %>
+            <li class="hidden-ss hidden-sm">
+                <%= link_to t("order"), new_guest_order_path %>
+              </li>
+            <% end %>
         </ul>
       </div>
     </div>
@@ -75,7 +75,7 @@
 
 <div class="row">
     <div class="category">
-      <div id="ctl00_topbar1_colmd" class="col-lg-3 col-md-4 hidden-sm hidden-xs">
+      <div id="ctl00_topbar1_colmd" class="col-lg-2 col-md-3 hidden-sm hidden-xs">
         <div class="tit-list" id="hidden-toggler">
           <ul class="">
             <li class="dropdown">
@@ -100,7 +100,7 @@
             </ul>
         </div>
       </div>
-      <div class="col-lg-7 col-md-9 col-sm-9 col-xs-11">
+      <div class="col-lg-6 col-md-8 col-sm-8 col-xs-10">
         <div class="search-pro">
           <div class="input-group">
           <% @products = Product.all %>
@@ -115,6 +115,13 @@
               </div>
                 </div>
             </div>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+          <div class="search-pro">
+            <div class="input-group">
+              <%= link_to "Search Advance", advance_searchs_path, class: "btn btn-primary" %>
+            </div>
+          </div>
         </div>
     </div>
 </div>

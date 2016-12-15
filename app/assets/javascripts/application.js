@@ -18,5 +18,6 @@
 //= require ratyrate
 //= require jquery.flexslider
 //= require jquery.flexslider-min
+//= require social-share-button
 $('.datepicker').datepicker();
 $('.disable_input :text_field').prop('disabled', true);

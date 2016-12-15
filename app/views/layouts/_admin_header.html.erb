@@ -15,24 +15,10 @@
           <ul id="ctl00_header1_login" class="flRight">
             <% if user_signed_in? %>
               <li class="hidden-xs hidden-sm">
-                <%= current_user.name %>
-              </li>
-              <li class="hidden-xs hidden-sm">
-                <li><%= link_to t("cart.all_carts"), carts_path %></li>
-              </li>
-              <li class="hidden-xs hidden-sm">
-                <li><%= link_to t("cart.current_cart"), new_cart_path %></li>
-              </li>
-              <li class="hidden-xs hidden-sm">
-                 <li><%= link_to t("user.profile"), user_path(current_user) %></li>
-              </li>
-              <li class="hidden-xs hidden-sm">
-                 <li><%= link_to t("user.edit"), edit_user_registration_path %></li>
-              </li>
-              <li class="hidden-xs hidden-sm">
                <%= link_to t("user.log_out"), destroy_user_session_path,
                   method: :delete %>
               </li>
+              <li></li>
             <% else %>
               <li class="hidden-xs hidden-sm">
                 <%= link_to t("order"), new_guest_order_path %>
@@ -44,6 +30,7 @@
               <li class="hidden-xs hidden-sm">
                 <%= link_to t("sign_up"), new_user_registration_path %>
               </li>
+              <li>  </li>
             <% end %>
           </ul>
       </div>
@@ -56,14 +43,10 @@
     <div class="col-lg-9 col-md-9 col-xm-9 col-sm-9 col-xs-12 hidden-xs">
       <div class="menu-logo">
         <ul>
-          <li class="hidden-ss hidden-sm">
-            <a href="https://www.trananh.vn/tin-tuc/gioi-thieu-cong-ty/gioi-thieu-chung-n1">INTRODUCTION</a>
-          </li>
-          <li class="hidden-ss hidden-sm"><a href="https://www.trananh.vn/tin-tuc/tin-tuc-c701">NEWS</a></li>
-          <li class="hidden-ss"><a href="https://www.trananh.vn/tin-tuc/review-san-pham-c1166">REVIEW PRODUCTS</a></li>
-          <li class="hidden-ss"><a href="https://www.trananh.vn/tin-tuc/kinh-nghiem-hay-c1214">EXPERIENCE</a></li>
-          <li class="hidden-ss"><a href="https://www.trananh.vn/tin-tuc/qua-tang-nhat-ban-c1222">PRESENT</a></li>
-          <li class="hidden-ss hidden-sm"><a href="https://www.trananh.vn/tuyen-dung">RECRUITMENT</a></li>
+
+          <li class="hidden-ss hidden-sm"><%= link_to current_user.name, "#" %></li>
+          <li></li>
+          <li></li>
         </ul>
       </div>
     </div>

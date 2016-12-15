@@ -5,7 +5,7 @@
 
   <div class="col-sm-5">
     <div class="bg-white well">
-      <p><%= t "user.name"%>: <%= @user.name %></p>
+      <h2 style="color: #0a569b"><%= t "user.name"%>: <%= @user.name %></h2>
       <p><%= t "user.email"%>: <%= @user.email %></p>
       <p><%= t "user.birthday"%>: <%= @user.birthday %></p>
       <p><%= t "user.phone"%>: <%= @user.phone %></p>
@@ -20,6 +20,7 @@
   </div>
 </div>
 <hr>
+<% unless @user.carts.empty? %>
 <div class="row">
   <h1><%= t "cart.all_carts" %></h1>
   <table class="table table-bordered table-hover table-striped">
@@ -36,7 +37,8 @@
       </tbody>
     </table>
 </div>
-
+<% end %>
+<% unless @user.bookmarks.empty? %>
 <div class="row bg-white">
   <h1>All Bookmarks</h1>
   <hr>
@@ -46,3 +48,4 @@
     </div>
   </div>
 </div>
+<% end %>

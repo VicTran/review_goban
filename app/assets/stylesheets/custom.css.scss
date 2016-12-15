@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "social-share-button";
 
 body {
     background: #f1f1f1 none repeat scroll 0 0;
@@ -468,8 +469,8 @@ ol, ul {
 .progress, .progress-bar{
   border-radius: 2px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
-  height: 30px;
-  width: 600px;
+  height: 15%;
+  width: 100%;
   font-size: 18;
 }
 .row_content{
@@ -494,4 +495,13 @@ ol, ul {
 
 .gravatar_edit {
   margin-top: 15px;
+}
+$size: 30px;
+
+.social-share-button {
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+  }
 }
