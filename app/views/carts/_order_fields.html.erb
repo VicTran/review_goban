@@ -4,7 +4,7 @@
     width: "100px", min: 0 %></td>
   <td><%= ff.object.product.price %></td>
   <td><%= ff.object.product.promotion %> %</td>
-  <td><%= ff.object.sum_price %></td>
+  <td><%= ff.object.sum_price.to_i %></td>
   <%= ff.hidden_field :_destroy, class: 'check-remove' %>
   <td><%= link_to t(:remove), '#', class: 'remove_row' %></td>
 </tr>

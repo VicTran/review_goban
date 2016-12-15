@@ -10,6 +10,6 @@ class Cart < ActiveRecord::Base
         (1 - order_item.product.promotion.to_f/100)
         # byebug
     end
-    return sum
+    return sum.to_i
   end
 end

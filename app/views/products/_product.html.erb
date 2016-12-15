@@ -15,7 +15,7 @@
         <b>
           <%= t "product.price"%>: <%= product.price %> $
         </b><small class="real-price">
-            <%= (1 - product.promotion.to_f/100) * product.price %> $
+            <%= ((1 - product.promotion.to_f/100) * product.price).to_i %> $
         </small>
 
 </div>

@@ -24,7 +24,7 @@
       </div>
       <br/>
       <%= f.label :price, t("product.price") %><br/>
-      <%= f.number_field :price, class: "form-control", min: 1000, step: 1000 %>
+      <%= f.number_field :price, class: "form-control", min: 0 %>
       <br/>
       <%= f.label :promotion, t("product.promotion") %><br/>
       <%= f.number_field :promotion, class: "form-control", in: 0.0..100.0, step: 1 %>

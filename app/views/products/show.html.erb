@@ -57,7 +57,7 @@
           <div class="price-dt2">
             <div class="">
               <small class="price3">
-              <%= (1- @product.promotion.to_f/100) * @product.price %> $
+              <%= ((1- @product.promotion.to_f/100) * @product.price).to_i %> $
               </small>
               <span class="gkm"></span>
           </div>
