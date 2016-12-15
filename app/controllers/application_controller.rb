@@ -48,11 +48,7 @@ class ApplicationController < ActionController::Base
       :country, :state, :phone, :birthday)}
     devise_parameter_sanitizer.permit(:account_update) {|u| u.permit(:name,
       :email, :password, :password_confirmation, :picture, :gender,
-<<<<<<< HEAD
       :country, :state, :phone, :birthday)}
-=======
-      :country, :state, :phone, :birthday, :current_password)}
->>>>>>> c45300588f3ac4fd5dac8a6039d3736ba68d88ba
   end
 
   def layout_by_resource
