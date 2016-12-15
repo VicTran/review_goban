@@ -30,7 +30,11 @@
                 <%= form_for([ @product, @comment]) do |f| %>
                   <%= render 'shared/error_messages', object: f.object %>
                   <%= f.text_area :content, class: "form-control" %>
+                  <br>
                   <%= f.file_field :image, class: "form-control" %>
+                  <br>
+                  <%= image_tag @comment.image, height: "100px" %>
+                  <br>
                   <br>
                   <%= f.submit t("edit"), class: "btn btn-primary" %>
                 <% end %>

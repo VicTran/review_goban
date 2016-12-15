@@ -1,35 +1,33 @@
 <div class="col-md-7 col-sm-offset-2">
 <br>
 <br>
-  <div class="progress-group">
-    <%= t "user.users" %>
+<div class="row">
+  <div class="progress-group col-md-4">
     <%= link_to admin_users_path do %>
       <div class="progress sm">
         <div class="progress-bar progress-bar-aqua" style="width: 100%">
-          <%= User.all.count %> <%= t "user.users" %>
+          <div style="padding: 20px"><%= User.all.count %> <%= t "user.users" %></div>
         </div>
       </div>
     <% end %>
   </div>
-  <div class="progress-group">
-    <%= t "category.categories" %>
+  <div class="progress-group col-md-4">
     <%= link_to admin_categories_path do %>
       <div class="progress md">
         <div class="progress-bar progress-bar-aqua" style="width: 100%">
-          <%= Category.all.count %> <%= t "category.categories" %>
+          <div style="padding: 20px"><%= Category.all.count %> <%= t "category.categories" %></div>
         </div>
       </div>
     <% end %>
   </div>
-  <div class="progress-group">
-    <%= t "product.products" %>
+  <div class="progress-group col-md-4">
     <%= link_to admin_products_path do %>
       <div class="progress sm">
-        <div class="progress-bar progress-bar-aqua" style="width:<%= Product.display.count.to_f * 100 / Product.all.count %>%">
-          <%= Product.display.count %> <%= t "product.products" %>
+        <div class="progress-bar progress-bar-aqua" style="width:100%">
+          <div style="padding: 20px"><%= Product.all.count %> <%= t "product.products" %></div>
         </div>
-        <%= Product.not_display.count %> <%= t "product.products" %>
       </div>
     <% end %>
   </div>
+</div>
 </div>

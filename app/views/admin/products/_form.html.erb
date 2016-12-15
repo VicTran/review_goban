@@ -2,36 +2,36 @@
   <div class="col-md-offset-3 col-md-6">
     <%= form_for [:admin, @product], html: { multipart: true } do |f| %>
       <%= render "shared/error_messages", object: @product %>
-
+      <br/>
       <%= f.label :category, t("category.categories") %><br/>
-      <%= f.select :category_id, Category.all.collect { |p| [ p.name, p.id ] }, class: "form-control" %>
-
+      <%= f.select :category_id, Category.all.collect { |p| [ p.name, p.id ] }, class: "form-control" %><br/>
+      <br/>
       <%= f.label :name, t("product.name") %><br/>
       <%= f.text_field :name, class: "form-control" %>
-
+      <br/>
       <%= f.label :description, t("product.description") %><br/>
       <%= f.text_field :description, class: "form-control" %>
-
+      <br/>
       <%= f.label :detail, t("product.detail") %><br/>
       <%= f.text_area :detail, class: "form-control" %>
-
+      <br/>
       <%= f.label :image, t("product.image") %><br/>
       <%= f.file_field :image, accept: "image/jpeg, image/jpg, image/gif, image/png" %>
-
+      <br/>
       <div class="field">
         <%= f.label :pictures, t("product.pictures") %><br>
         <%= f.file_field :pictures, :multiple => true, name: "product_images[image][]" %>
       </div>
-
+      <br/>
       <%= f.label :price, t("product.price") %><br/>
       <%= f.number_field :price, class: "form-control", min: 1000, step: 1000 %>
-
+      <br/>
       <%= f.label :promotion, t("product.promotion") %><br/>
       <%= f.number_field :promotion, class: "form-control", in: 0.0..100.0, step: 1 %>
-
+      <br/>
       <%= f.label :is_display, t("product.is_display") %><br/>
       <%= f.check_box :is_display, class: "form-control"%>
-
+      <br/>
       <div class="actions">
         <%= f.submit t("submit"), class: "btn-primary" %>
       </div>

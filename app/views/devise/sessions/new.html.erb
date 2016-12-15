@@ -6,25 +6,26 @@
       url: session_path(resource_name) do |f| %>
 
       <%= devise_error_messages! %>
-
+      <br/>
       <%= f.label :email, t("user.email") %><br/>
       <%= f.email_field :email, autofocus: true, class: "form-control" %>
-
+      <br/>
       <%= f.label :password, t("user.password") %><br/>
       <%= f.password_field :password, autocomplete: "off",
         class: "form-control" %>
-
+        <br/>
       <% if devise_mapping.rememberable? %>
         <div class="field">
           <%= f.check_box :remember_me %>
           <%= f.label :remember_me, t("user.remember_me")%>
         </div>
       <% end %>
-
+      <br/>
       <div class="actions">
         <%= f.submit t("login"), class: "btn btn-primary" %>
       </div>
     <% end %>
   </div>
 </div>
+<br/>
 <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
