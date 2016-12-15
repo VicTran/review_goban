@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get 'advance_searchs/index'
 
   post '/rate' => 'rater#create', :as => 'rate'
-  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
+  devise_for :users, :controllers => {:omniauth_callbacks => "callbacks",
+    registrations: 'registrations'}
   root "static_pages#home"
 
   get "home" => "static_pages#home"
